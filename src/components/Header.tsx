@@ -20,29 +20,31 @@ export default function Header({ socialLinks, name }: HeaderProps) {
     instagram: '📷',
   };
 
+  const navLinks = [
+    { label: 'Home', href: '/' },
+    { label: 'About', href: '/about' },
+    { label: 'Projects', href: '/projects' },
+    { label: 'Blog', href: '/blog' },
+    { label: 'Contact', href: '/contact' },
+  ];
+
   return (
     <header className="sticky top-0 z-40 bg-white border-b border-gray-100 shadow-subtle">
       <div className="container-max flex items-center justify-between py-4 md:py-5">
-        <Link href="/" className="flex items-center gap-2">
-          <div className="text-2xl font-bold text-primary-600">{name}</div>
+        <Link href="/" className="text-2xl font-bold text-primary-600">
+          {name}
         </Link>
 
         <nav className="hidden md:flex items-center gap-8">
-          <Link href="#" className="text-secondary-700 hover:text-primary-600 transition-colors">
-            About
-          </Link>
-          <Link href="#" className="text-secondary-700 hover:text-primary-600 transition-colors">
-            Projects
-          </Link>
-          <Link href="#" className="text-secondary-700 hover:text-primary-600 transition-colors">
-            Skills
-          </Link>
-          <Link href="#" className="text-secondary-700 hover:text-primary-600 transition-colors">
-            Experience
-          </Link>
-          <Link href="#" className="text-secondary-700 hover:text-primary-600 transition-colors">
-            Contact
-          </Link>
+          {navLinks.map(link => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className="text-secondary-700 hover:text-primary-600 transition-colors"
+            >
+              {link.label}
+            </Link>
+          ))}
         </nav>
 
         <div className="hidden md:flex items-center gap-4">
@@ -71,21 +73,16 @@ export default function Header({ socialLinks, name }: HeaderProps) {
 
       {mobileMenuOpen && (
         <nav className="md:hidden bg-gray-50 border-t border-gray-100 px-4 py-4 space-y-3">
-          <Link href="#" className="block text-secondary-700 hover:text-primary-600">
-            About
-          </Link>
-          <Link href="#" className="block text-secondary-700 hover:text-primary-600">
-            Projects
-          </Link>
-          <Link href="#" className="block text-secondary-700 hover:text-primary-600">
-            Skills
-          </Link>
-          <Link href="#" className="block text-secondary-700 hover:text-primary-600">
-            Experience
-          </Link>
-          <Link href="#" className="block text-secondary-700 hover:text-primary-600">
-            Contact
-          </Link>
+          {navLinks.map(link => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className="block text-secondary-700 hover:text-primary-600"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              {link.label}
+            </Link>
+          ))}
           <div className="pt-4 border-t border-gray-200 flex gap-4">
             {socialLinks.map(link => (
               <a
