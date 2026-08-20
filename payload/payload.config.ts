@@ -1,35 +1,22 @@
 import { buildConfig } from 'payload';
+import { Users } from './collections/Users';
 import { Profile } from './collections/Profile';
+import { Projects } from './collections/Projects';
+import { BlogPosts } from './collections/BlogPosts';
+import { ContactSubmissions } from './collections/ContactSubmissions';
 import { SocialLinks } from './collections/SocialLinks';
 import { CTAButtons } from './collections/CTAButtons';
 
-const Users = {
-  slug: 'users',
-  auth: true,
-  admin: {
-    useAsTitle: 'email',
-  },
-  fields: [
-    {
-      name: 'email',
-      type: 'email',
-      required: true,
-      unique: true,
-    },
-    {
-      name: 'name',
-      type: 'text',
-    },
-  ],
-};
-
 export default buildConfig({
   admin: {
-    user: Users.slug,
+    user: 'users',
   },
   collections: [
     Users,
     Profile,
+    Projects,
+    BlogPosts,
+    ContactSubmissions,
     SocialLinks,
     CTAButtons,
   ],
