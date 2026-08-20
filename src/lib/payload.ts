@@ -1,4 +1,5 @@
 import type { Profile, SocialLink, CTAButton, PageData } from '@/types';
+import { mockPageData } from './mock-data';
 
 export async function fetchProfile(): Promise<Profile> {
   try {
@@ -32,8 +33,8 @@ export async function fetchProfile(): Promise<Profile> {
       updatedAt: doc.updatedAt,
     };
   } catch (error) {
-    console.error('Error fetching profile:', error);
-    throw error;
+    console.warn('Payload CMS unavailable, using mock data:', error);
+    return mockPageData.profile;
   }
 }
 
@@ -55,8 +56,8 @@ export async function fetchSocialLinks(): Promise<SocialLink[]> {
       displayOrder: doc.displayOrder,
     }));
   } catch (error) {
-    console.error('Error fetching social links:', error);
-    return [];
+    console.warn('Payload CMS unavailable, using mock data:', error);
+    return mockPageData.socialLinks;
   }
 }
 
@@ -78,8 +79,8 @@ export async function fetchCTAButtons(): Promise<CTAButton[]> {
       displayOrder: doc.displayOrder,
     }));
   } catch (error) {
-    console.error('Error fetching CTA buttons:', error);
-    return [];
+    console.warn('Payload CMS unavailable, using mock data:', error);
+    return mockPageData.ctaButtons;
   }
 }
 
