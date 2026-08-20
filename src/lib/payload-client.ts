@@ -1,22 +1,23 @@
-import payload from 'payload';
+import { getPayload } from 'payload';
 import config from '../../payload/payload.config';
 
-let initialized = false;
+let payloadInstance: any = null;
 
 export const initializePayload = async () => {
-  if (initialized) {
-    return payload;
+  if (payloadInstance) {
+    return payloadInstance;
   }
 
-  if (!payload.email) {
-    await payload.init({
-      config,
-      secret: process.env.PAYLOAD_SECRET || 'test-secret',
-    });
+  try {
+    payloadInstance = await getPayload({ config });
+    console.log('✅ Payload CMS initialized');
+    return payloadInstance;
+  } catch (error) {
+    console.error('❌ Error initializing Payload CMS:', error);
+    throw error;
   }
-
-  initialized = true;
-  return payload;
 };
 
-export default payload;
+export const getPayloadInstance = () => payloadInstance;
+
+export default payloadInstance;
