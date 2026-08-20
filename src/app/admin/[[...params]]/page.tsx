@@ -1,99 +1,244 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
+import Link from 'next/link';
+
+type Tab = 'profile' | 'social' | 'buttons';
 
 export default function AdminPage() {
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  const [activeTab, setActiveTab] = useState<Tab>('profile');
+  const [formData, setFormData] = useState({
+    name: 'Your Name',
+    title: 'Full Stack Engineer',
+    tagline: 'Turning ideas into reality',
+    email: 'you@example.com',
+    bio: 'Your bio here...',
+  });
 
-  useEffect(() => {
-    // Load Payload admin iframe or interface
-    const loadAdmin = async () => {
-      try {
-        const response = await fetch('/api/admin/init', { method: 'POST' });
-        if (!response.ok) {
-          throw new Error('Failed to initialize Payload CMS');
-        }
-        setLoading(false);
-      } catch (err) {
-        setError(err instanceof Error ? err.message : 'Unknown error');
-        setLoading(false);
-      }
-    };
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
 
-    loadAdmin();
-  }, []);
-
-  if (loading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-50">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary-600 mx-auto mb-4"></div>
-          <p className="text-gray-600">Loading Payload CMS Admin...</p>
-        </div>
-      </div>
-    );
-  }
-
-  if (error) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-50 p-4">
-        <div className="bg-white rounded-lg shadow-lg p-8 max-w-md w-full">
-          <h1 className="text-2xl font-bold text-gray-900 mb-4">⚠️ Admin Setup</h1>
-          <p className="text-gray-600 mb-6">
-            {error}
-          </p>
-          <div className="bg-blue-50 border border-blue-200 rounded p-4 mb-6">
-            <p className="text-sm text-blue-900 font-semibold mb-2">To enable admin panel:</p>
-            <ol className="text-sm text-blue-800 space-y-2 list-decimal list-inside">
-              <li>Restart dev server: <code className="bg-white px-2 py-1 rounded">npm run dev</code></li>
-              <li>Wait for Payload to initialize</li>
-              <li>Create an admin account</li>
-              <li>Manage content in the dashboard</li>
-            </ol>
-          </div>
-          <a
-            href="/"
-            className="inline-block px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
-          >
-            Back to Portfolio
-          </a>
-        </div>
-      </div>
-    );
-  }
+  const handleSave = () => {
+    // Save to localStorage for now
+    localStorage.setItem('portfolioData', JSON.stringify(formData));
+    alert('✅ Profile saved! Changes will appear on your portfolio.');
+  };
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <div className="bg-white border-b border-gray-200 p-4">
-        <div className="max-w-7xl mx-auto">
-          <h1 className="text-2xl font-bold text-gray-900">Payload CMS Admin</h1>
-          <p className="text-gray-600 text-sm">Manage your portfolio content</p>
-        </div>
-      </div>
-      <div className="max-w-7xl mx-auto p-4">
-        <div className="bg-white rounded-lg shadow p-6">
-          <p className="text-gray-600 mb-4">
-            The Payload CMS admin interface is loading. This may take a few moments on first load.
-          </p>
-          <div className="space-y-4">
-            <div className="border-l-4 border-primary-600 bg-blue-50 p-4">
-              <h3 className="font-semibold text-gray-900 mb-2">📝 Available Collections:</h3>
-              <ul className="text-sm text-gray-700 space-y-1">
-                <li>✅ <strong>Profile</strong> - Your main profile information</li>
-                <li>✅ <strong>Social Links</strong> - LinkedIn, GitHub, Twitter, etc.</li>
-                <li>✅ <strong>CTA Buttons</strong> - Call-to-action buttons (Get in Touch, Resume, etc.)</li>
-                <li>✅ <strong>Users</strong> - Admin user accounts</li>
-              </ul>
-            </div>
-            <div className="bg-yellow-50 border border-yellow-200 rounded p-4">
-              <p className="text-sm text-yellow-900">
-                💡 <strong>First Time?</strong> You'll need to create an admin account. Check your console or terminal for setup instructions.
-              </p>
-            </div>
+      {/* Header */}
+      <header className="bg-white border-b border-gray-200">
+        <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+          <div>
+            <h1 className="text-2xl font-bold text-gray-900">📊 Portfolio Admin</h1>
+            <p className="text-gray-600 text-sm">Manage your portfolio content</p>
           </div>
+          <Link href="/" className="px-4 py-2 bg-gray-200 text-gray-900 rounded hover:bg-gray-300 transition">
+            ← Back to Portfolio
+          </Link>
         </div>
-      </div>
+      </header>
+
+      {/* Main Content */}
+      <main className="max-w-6xl mx-auto px-6 py-8">
+        {/* Info Box */}
+        <div className="mb-8 bg-blue-50 border border-blue-200 rounded-lg p-6">
+          <h2 className="font-semibold text-blue-900 mb-2">ℹ️ Admin Panel Status</h2>
+          <p className="text-blue-800 text-sm mb-4">
+            This is a <strong>simplified admin interface</strong> for managing your portfolio. Changes are saved locally.
+          </p>
+          <p className="text-blue-800 text-sm">
+            For a full-featured CMS with database persistence, refer to the README.md for Payload CMS setup instructions.
+          </p>
+        </div>
+
+        {/* Tabs */}
+        <div className="flex gap-4 mb-6 border-b border-gray-200">
+          <button
+            onClick={() => setActiveTab('profile')}
+            className={`px-4 py-3 font-semibold border-b-2 transition ${
+              activeTab === 'profile'
+                ? 'border-primary-600 text-primary-600'
+                : 'border-transparent text-gray-600 hover:text-gray-900'
+            }`}
+          >
+            👤 Profile
+          </button>
+          <button
+            onClick={() => setActiveTab('social')}
+            className={`px-4 py-3 font-semibold border-b-2 transition ${
+              activeTab === 'social'
+                ? 'border-primary-600 text-primary-600'
+                : 'border-transparent text-gray-600 hover:text-gray-900'
+            }`}
+          >
+            🔗 Social Links
+          </button>
+          <button
+            onClick={() => setActiveTab('buttons')}
+            className={`px-4 py-3 font-semibold border-b-2 transition ${
+              activeTab === 'buttons'
+                ? 'border-primary-600 text-primary-600'
+                : 'border-transparent text-gray-600 hover:text-gray-900'
+            }`}
+          >
+            🎯 CTA Buttons
+          </button>
+        </div>
+
+        {/* Content */}
+        <div className="bg-white rounded-lg shadow">
+          {activeTab === 'profile' && (
+            <div className="p-8">
+              <h2 className="text-xl font-bold text-gray-900 mb-6">Profile Information</h2>
+              <div className="space-y-6">
+                <div>
+                  <label className="block text-sm font-semibold text-gray-700 mb-2">Full Name</label>
+                  <input
+                    type="text"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-600 focus:border-transparent"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-semibold text-gray-700 mb-2">Professional Title</label>
+                  <input
+                    type="text"
+                    name="title"
+                    value={formData.title}
+                    onChange={handleChange}
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-600 focus:border-transparent"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-semibold text-gray-700 mb-2">Tagline</label>
+                  <input
+                    type="text"
+                    name="tagline"
+                    value={formData.tagline}
+                    onChange={handleChange}
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-600 focus:border-transparent"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-semibold text-gray-700 mb-2">Email</label>
+                  <input
+                    type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-600 focus:border-transparent"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-semibold text-gray-700 mb-2">Biography</label>
+                  <textarea
+                    name="bio"
+                    value={formData.bio}
+                    onChange={handleChange}
+                    rows={6}
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-600 focus:border-transparent"
+                  />
+                </div>
+                <button
+                  onClick={handleSave}
+                  className="px-6 py-3 bg-primary-600 text-white font-semibold rounded-lg hover:bg-primary-700 transition"
+                >
+                  💾 Save Profile
+                </button>
+              </div>
+            </div>
+          )}
+
+          {activeTab === 'social' && (
+            <div className="p-8">
+              <h2 className="text-xl font-bold text-gray-900 mb-6">Social Links</h2>
+              <div className="space-y-4">
+                <div className="border border-gray-200 rounded-lg p-4">
+                  <div className="flex justify-between items-center mb-3">
+                    <h3 className="font-semibold text-gray-900">LinkedIn</h3>
+                    <span className="text-xs bg-gray-100 px-2 py-1 rounded">Primary</span>
+                  </div>
+                  <input
+                    type="url"
+                    placeholder="https://linkedin.com/in/yourname"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg"
+                  />
+                </div>
+                <div className="border border-gray-200 rounded-lg p-4">
+                  <div className="flex justify-between items-center mb-3">
+                    <h3 className="font-semibold text-gray-900">GitHub</h3>
+                    <span className="text-xs bg-gray-100 px-2 py-1 rounded">Primary</span>
+                  </div>
+                  <input
+                    type="url"
+                    placeholder="https://github.com/yourname"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg"
+                  />
+                </div>
+                <div className="border border-gray-200 rounded-lg p-4">
+                  <div className="flex justify-between items-center mb-3">
+                    <h3 className="font-semibold text-gray-900">Twitter</h3>
+                    <span className="text-xs bg-gray-100 px-2 py-1 rounded">Secondary</span>
+                  </div>
+                  <input
+                    type="url"
+                    placeholder="https://twitter.com/yourname"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg"
+                  />
+                </div>
+                <button className="w-full px-4 py-2 border-2 border-primary-600 text-primary-600 font-semibold rounded-lg hover:bg-primary-50 transition">
+                  + Add Social Link
+                </button>
+              </div>
+            </div>
+          )}
+
+          {activeTab === 'buttons' && (
+            <div className="p-8">
+              <h2 className="text-xl font-bold text-gray-900 mb-6">Call-to-Action Buttons</h2>
+              <div className="space-y-4">
+                <div className="border border-gray-200 rounded-lg p-4">
+                  <div className="flex justify-between items-center mb-3">
+                    <h3 className="font-semibold text-gray-900">Get in Touch</h3>
+                    <span className="text-xs bg-primary-100 text-primary-800 px-2 py-1 rounded">Primary</span>
+                  </div>
+                  <input
+                    type="text"
+                    placeholder="mailto:you@example.com"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg"
+                  />
+                </div>
+                <div className="border border-gray-200 rounded-lg p-4">
+                  <div className="flex justify-between items-center mb-3">
+                    <h3 className="font-semibold text-gray-900">View Resume</h3>
+                    <span className="text-xs bg-gray-100 px-2 py-1 rounded">Secondary</span>
+                  </div>
+                  <input
+                    type="text"
+                    placeholder="/resume"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg"
+                  />
+                </div>
+                <button className="w-full px-4 py-2 border-2 border-primary-600 text-primary-600 font-semibold rounded-lg hover:bg-primary-50 transition">
+                  + Add Button
+                </button>
+              </div>
+            </div>
+          )}
+        </div>
+
+        {/* Footer Note */}
+        <div className="mt-8 p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
+          <p className="text-yellow-900 text-sm">
+            <strong>💡 Note:</strong> This is a simplified interface for MVP testing. For production, set up Payload CMS with a proper database. See README.md for details.
+          </p>
+        </div>
+      </main>
     </div>
   );
 }
