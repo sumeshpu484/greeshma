@@ -25,7 +25,7 @@ export const BlogPosts: CollectionConfig = {
     },
     {
       name: 'content',
-      type: 'richText',
+      type: 'text',
       required: true,
     },
     {

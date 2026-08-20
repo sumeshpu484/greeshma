@@ -29,7 +29,7 @@ export const Profile: CollectionConfig = {
     },
     {
       name: 'bio',
-      type: 'richText',
+      type: 'text',
       required: true,
       label: 'Biography',
     },

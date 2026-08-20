@@ -32,7 +32,7 @@ export const ContactSubmissions: CollectionConfig = {
     },
     {
       name: 'message',
-      type: 'richText',
+      type: 'text',
       required: true,
     },
     {
