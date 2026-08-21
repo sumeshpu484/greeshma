@@ -18,14 +18,18 @@ export const Profile: CollectionConfig = {
       type: 'text',
       required: true,
       label: 'Professional Title',
-      placeholder: 'e.g., Full Stack Engineer',
+      admin: {
+        placeholder: 'e.g., Full Stack Engineer',
+      },
     },
     {
       name: 'tagline',
       type: 'text',
       required: true,
       label: 'Tagline/Short Intro',
-      placeholder: 'Short introduction for hero section',
+      admin: {
+        placeholder: 'Short introduction for hero section',
+      },
     },
     {
       name: 'bio',

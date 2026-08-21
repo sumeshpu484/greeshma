@@ -75,9 +75,9 @@ export default function HeroSectionModern({ profile, ctaButtons }: HeroSectionMo
       // Scroll indicator animation
       gsap.to('.scroll-indicator', {
         y: 6,
-        opacity: [1, 0.6, 1],
         duration: 1.8,
         repeat: -1,
+        yoyo: true,
         ease: 'sine.inOut',
       });
     }, containerRef);

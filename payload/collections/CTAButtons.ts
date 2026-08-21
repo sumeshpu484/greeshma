@@ -12,14 +12,18 @@ export const CTAButtons: CollectionConfig = {
       type: 'text',
       required: true,
       label: 'Button Text',
-      placeholder: 'e.g., Get in Touch',
+      admin: {
+        placeholder: 'e.g., Get in Touch',
+      },
     },
     {
       name: 'href',
       type: 'text',
       required: true,
       label: 'Link/URL',
-      placeholder: 'mailto:email@example.com or /contact',
+      admin: {
+        placeholder: 'mailto:email@example.com or /contact',
+      },
     },
     {
       name: 'style',

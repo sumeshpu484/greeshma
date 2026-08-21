@@ -116,12 +116,14 @@ export default function ScrollSection({
                 <div className="card-modern group cursor-pointer overflow-hidden h-full flex flex-col">
                   {/* Image */}
                   <div className="relative h-48 overflow-hidden rounded-lg mb-4">
-                    <Image
-                      src={isProject(item) ? item.image : (isBlogPost(item) ? item.image : '')}
-                      alt={isProject(item) ? item.title : (isBlogPost(item) ? item.title : '')}
-                      fill
-                      className="object-cover group-hover:scale-110 transition-transform duration-500"
-                    />
+                    {(isProject(item) ? item.image : (isBlogPost(item) ? item.image : null)) && (
+                      <Image
+                        src={isProject(item) ? item.image! : (isBlogPost(item) ? item.image! : '')}
+                        alt={isProject(item) ? item.title : (isBlogPost(item) ? item.title : '')}
+                        fill
+                        className="object-cover group-hover:scale-110 transition-transform duration-500"
+                      />
+                    )}
                     <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
                   </div>
 
@@ -168,7 +170,7 @@ export default function ScrollSection({
                   <Link
                     href={
                       isProject(item)
-                        ? item.link
+                        ? (item.link || '#')
                         : isBlogPost(item)
                         ? `/blog/${item.slug}`
                         : '#'

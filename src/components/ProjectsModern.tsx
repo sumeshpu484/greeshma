@@ -152,7 +152,7 @@ export default function ProjectsModern({ projects }: ProjectsModernProps) {
 
                 {/* CTA */}
                 <Link
-                  href={project.link}
+                  href={project.link || '#'}
                   target="_blank"
                   className="inline-flex items-center text-blue-400 hover:text-cyan-400 font-semibold text-sm transition-colors"
                 >
