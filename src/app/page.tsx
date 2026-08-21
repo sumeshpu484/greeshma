@@ -5,6 +5,8 @@ import ProjectsModern from '@/components/ProjectsModern';
 import SkillsModern from '@/components/SkillsModern';
 import ServicesModern from '@/components/ServicesModern';
 import TestimonialsModern from '@/components/TestimonialsModern';
+import AboutSection from '@/components/AboutSection';
+import PhotoGallery from '@/components/PhotoGallery';
 import { fetchPageData } from '@/lib/payload';
 
 export default async function Home() {
@@ -23,6 +25,19 @@ export default async function Home() {
 
         {/* Skills Section */}
         <SkillsModern />
+
+        {/* About Section with Photo */}
+        <AboutSection
+          photoUrl="https://api.dicebear.com/7.x/avataaars/svg?seed=greeshma-workspace"
+          title="About Me"
+          description="I'm passionate about creating beautiful, performant digital experiences. With expertise in modern web technologies, I combine technical excellence with creative thinking to deliver solutions that exceed expectations."
+        />
+
+        {/* Photo Gallery Section */}
+        <PhotoGallery
+          title="Behind the Scenes"
+          subtitle="A glimpse into my creative process and project work"
+        />
 
         {/* Featured Projects */}
         {projects.length > 0 && <ProjectsModern projects={projects} />}
