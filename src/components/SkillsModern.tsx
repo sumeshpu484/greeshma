@@ -10,39 +10,39 @@ if (typeof window !== 'undefined') {
 
 const skillCategories = [
   {
-    title: 'Frontend',
+    title: 'Core Expertise',
     skills: [
-      { name: 'React & Next.js', level: 95 },
-      { name: 'TypeScript', level: 92 },
-      { name: 'Tailwind CSS', level: 94 },
-      { name: 'Framer Motion', level: 90 },
+      { name: 'Project Management', level: 95 },
+      { name: 'Business Analysis', level: 94 },
+      { name: 'Operations Strategy', level: 92 },
+      { name: 'Stakeholder Management', level: 93 },
     ]
   },
   {
-    title: 'Backend',
+    title: 'Agile & Delivery',
     skills: [
-      { name: 'Node.js & Express', level: 90 },
-      { name: 'Python', level: 85 },
-      { name: 'PostgreSQL', level: 88 },
-      { name: 'GraphQL', level: 87 },
+      { name: 'Agile Methodologies', level: 95 },
+      { name: 'Scrum Master', level: 93 },
+      { name: 'Project Delivery', level: 94 },
+      { name: 'Requirements Analysis', level: 92 },
     ]
   },
   {
-    title: 'Tools & DevOps',
+    title: 'Business & Strategy',
     skills: [
-      { name: 'Git & CI/CD', level: 92 },
-      { name: 'Docker', level: 88 },
-      { name: 'AWS', level: 86 },
-      { name: 'Vercel & Netlify', level: 94 },
+      { name: 'Digital Transformation', level: 91 },
+      { name: 'Business Process Improvement', level: 90 },
+      { name: 'Strategic Planning', level: 89 },
+      { name: 'Risk Management', level: 88 },
     ]
   },
   {
-    title: 'Design & UX',
+    title: 'Technology & Tools',
     skills: [
-      { name: 'UI/UX Design', level: 89 },
-      { name: 'Figma', level: 91 },
-      { name: 'Animations', level: 93 },
-      { name: 'Accessibility', level: 90 },
+      { name: 'JIRA & Project Tools', level: 92 },
+      { name: 'VR/XR Technology', level: 87 },
+      { name: 'Data Analysis', level: 85 },
+      { name: 'CRM Systems', level: 86 },
     ]
   }
 ];

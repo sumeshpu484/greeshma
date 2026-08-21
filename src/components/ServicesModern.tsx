@@ -9,12 +9,12 @@ if (typeof window !== 'undefined') {
 }
 
 const services = [
-  { icon: '⚡', title: 'Web Design & Development', desc: 'Beautiful, responsive websites with cutting-edge tech' },
-  { icon: '🚀', title: 'Performance Optimization', desc: 'Lightning-fast sites optimized for SEO and UX' },
-  { icon: '🔧', title: 'Full-Stack Development', desc: 'Complete apps built with modern architecture' },
-  { icon: '📱', title: 'Mobile-First Design', desc: 'Seamless experience across all devices' },
-  { icon: '🤝', title: 'Team Augmentation', desc: 'Expert developers to accelerate your projects' },
-  { icon: '🎯', title: 'Strategic Consultation', desc: 'Technical guidance for your product vision' },
+  { icon: '📊', title: 'Business Analysis & Strategy', desc: 'Strategic insights and business transformation roadmaps for organizations' },
+  { icon: '🎯', title: 'Operations Management', desc: 'End-to-end operational excellence through systems thinking and agile frameworks' },
+  { icon: '🔄', title: 'Digital Transformation', desc: 'Modernizing businesses through technology integration and process optimization' },
+  { icon: '⚡', title: 'Project Management', desc: 'Agile-driven project delivery with proven track record of 55%+ efficiency gains' },
+  { icon: '🚀', title: 'Ecosystem Building', desc: 'Creating integrated platforms connecting training, recruitment, and innovation' },
+  { icon: '🤝', title: 'Stakeholder Management', desc: 'Cross-functional collaboration and executive advisory for complex initiatives' },
 ];
 
 export default function ServicesModern() {

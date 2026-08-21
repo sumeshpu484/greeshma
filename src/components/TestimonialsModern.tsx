@@ -11,31 +11,31 @@ if (typeof window !== 'undefined') {
 
 const testimonials = [
   {
-    name: 'Sarah Johnson',
-    role: 'Product Manager at TechStart',
-    content: 'Exceptional developer who delivers pixel-perfect results. Their attention to detail and proactive communication made the entire project smooth and enjoyable.',
-    avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Sarah',
+    name: 'Brahma AM',
+    role: 'Program Manager at IBS Software',
+    content: 'Greeshma is the most amazing person I have worked with. A highly skilled leader who keeps her clients at the center of her work each day and goes above and beyond in delivering results. Any organization would be proud of such talent.',
+    avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=brahma-am',
     rating: 5
   },
   {
-    name: 'Michael Chen',
-    role: 'CEO of Digital Solutions Inc',
-    content: 'Transformed our entire web infrastructure. The performance improvements alone saved us thousands in server costs. Truly outstanding work!',
-    avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Michael',
+    name: 'Hadi Kazemi',
+    role: 'Academic Programme Director | CIOB Trustee',
+    content: 'Greeshma is a hardworking individual with great work ethics. She would be a great asset for any organisation with her dedication to excellence and continuous learning.',
+    avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=hadi-kazemi',
     rating: 5
   },
   {
-    name: 'Emily Rodriguez',
-    role: 'Design Lead at Creative Agency',
-    content: 'A rare developer who truly understands design principles. They brought our most ambitious designs to life flawlessly and with great precision.',
-    avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Emily',
+    name: 'Ignitho Technologies',
+    role: 'Rock Star Award - December 2019',
+    content: 'Awarded for exceptional project delivery, outstanding contributions, and demonstrating remarkable dedication to team excellence. Recognized across the organization for setting new performance standards.',
+    avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=ignitho-award',
     rating: 5
   },
   {
-    name: 'David Park',
-    role: 'Founder of StartupXYZ',
-    content: 'Outstanding problem solver. Handled complex technical challenges with ease and grace. Would definitely work together again in a heartbeat!',
-    avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=David',
+    name: 'WARTENS UK Leadership',
+    role: 'UK National StartUp Awards 2025 Winner',
+    content: 'As COO & Co-Founder, Greeshma\'s vision and strategic execution have been instrumental in WARTENS winning the UK National StartUp Awards 2025 for Engineering & Manufacturing. Her leadership drives innovation forward.',
+    avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=wartens-award',
     rating: 5
   }
 ];
