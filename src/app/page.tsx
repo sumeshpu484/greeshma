@@ -1,74 +1,59 @@
 import Header from '@/components/Header';
-import HeroSection from '@/components/HeroSection';
+import HeroSectionModern from '@/components/HeroSectionModern';
 import Footer from '@/components/Footer';
-import ScrollSection from '@/components/ScrollSection';
-import SkillsSection from '@/components/SkillsSection';
-import TestimonialsSection from '@/components/TestimonialsSection';
-import ServicesSection from '@/components/ServicesSection';
-import StatsSection from '@/components/StatsSection';
+import ProjectsModern from '@/components/ProjectsModern';
+import SkillsModern from '@/components/SkillsModern';
+import ServicesModern from '@/components/ServicesModern';
+import TestimonialsModern from '@/components/TestimonialsModern';
 import { fetchPageData } from '@/lib/payload';
 
 export default async function Home() {
   try {
     const { profile, socialLinks, ctaButtons, projects, blogPosts } = await fetchPageData();
-    const allProjects = projects;
-    const allPosts = blogPosts;
 
     return (
       <>
         <Header socialLinks={socialLinks} name={profile.name} />
 
-        {/* Hero Section */}
-        <HeroSection profile={profile} ctaButtons={ctaButtons} />
-
-        {/* Stats Section */}
-        <StatsSection />
+        {/* Ultra-Modern Hero Section */}
+        <HeroSectionModern profile={profile} ctaButtons={ctaButtons} />
 
         {/* Services Section */}
-        <ServicesSection />
+        <ServicesModern />
 
         {/* Skills Section */}
-        <SkillsSection />
+        <SkillsModern />
 
-        {/* All Projects Scroll Section */}
-        {allProjects.length > 0 && (
-          <ScrollSection
-            title="My Projects"
-            items={allProjects.slice(0, 12)}
-            type="projects"
-            viewAllLink="/projects"
-          />
-        )}
-
-        {/* Latest Blog Posts Scroll Section */}
-        {allPosts.length > 0 && (
-          <ScrollSection
-            title="Latest Articles & Insights"
-            items={allPosts.slice(0, 9)}
-            type="blog"
-            viewAllLink="/blog"
-          />
-        )}
+        {/* Featured Projects */}
+        {projects.length > 0 && <ProjectsModern projects={projects} />}
 
         {/* Testimonials Section */}
-        <TestimonialsSection />
+        <TestimonialsModern />
 
-        {/* Contact Section */}
-        <section className="relative py-20 md:py-28 bg-gradient-to-b from-slate-900/50 to-slate-800/50">
+        {/* Contact CTA Section */}
+        <section className="relative py-20 md:py-28">
           <div className="container-max">
-            <div className="max-w-2xl mx-auto text-center">
-              <h2 className="text-4xl md:text-5xl font-bold mb-4">
-                <span className="gradient-text">Get In Touch</span>
-              </h2>
-              <p className="text-lg text-slate-300 mb-8">
-                Let's collaborate on your next amazing project. Feel free to reach out!
-              </p>
-              <a
-                href="#contact"
-                className="btn-primary inline-block"
-              >
-                Send Me a Message
-              </a>
+            {/* Decorative elements */}
+            <div className="absolute top-0 left-0 w-72 h-72 bg-gradient-to-br from-blue-500/20 to-transparent rounded-full blur-3xl -z-10"></div>
+            <div className="absolute bottom-0 right-0 w-72 h-72 bg-gradient-to-br from-purple-500/20 to-transparent rounded-full blur-3xl -z-10"></div>
+
+            <div className="max-w-3xl mx-auto text-center space-y-8">
+              <div>
+                <p className="text-label mb-4">Let's Create</p>
+                <h2 className="text-display gradient-text-ultra mb-4">Ready to Build Something Great?</h2>
+                <p className="text-body max-w-2xl mx-auto">
+                  I'm always interested in hearing about new projects and opportunities to work with incredible people.
+                </p>
+              </div>
+
+              <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
+                <a href="mailto:contact@example.com" className="btn-primary">
+                  Start a Conversation
+                </a>
+                <a href="/about" className="btn-secondary">
+                  Learn More About Me
+                </a>
+              </div>
             </div>
           </div>
         </section>
@@ -80,8 +65,8 @@ export default async function Home() {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
-          <h1 className="text-2xl font-bold text-slate-100 mb-2">Portfolio</h1>
-          <p className="text-slate-400">Loading portfolio...</p>
+          <h1 className="text-2xl font-bold text-white mb-2">Portfolio</h1>
+          <p className="text-white/60">Loading portfolio...</p>
         </div>
       </div>
     );
