@@ -22,44 +22,48 @@ export default function ProjectsModern({ projects }: ProjectsModernProps) {
       cardsRef.current.forEach((card, i) => {
         if (!card) return;
 
-        // Smooth scroll reveal animation
-        gsap.from(card, {
-          opacity: 0,
-          y: 80,
-          duration: 1.3,
-          delay: i * 0.1,
-          ease: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)',
-          scrollTrigger: {
-            trigger: card,
-            start: 'top 90%',
-            end: 'top 40%',
-            scrub: 0.8,
-            once: false,
-          },
-        });
+        // Smooth scroll reveal with stagger
+        gsap.fromTo(
+          card,
+          { opacity: 0, y: 60 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.7,
+            delay: i * 0.08,
+            ease: 'power2.out',
+            scrollTrigger: {
+              trigger: card,
+              start: 'top 85%',
+              toggleActions: 'play none none reverse',
+              markers: false,
+            },
+          }
+        );
 
-        // Hover 3D effect
+        // Optimized hover 3D effect
         const onMouseMove = (e: MouseEvent) => {
           if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
           const rect = card.getBoundingClientRect();
-          const x = (e.clientX - rect.left - rect.width / 2) / 40;
-          const y = (e.clientY - rect.top - rect.height / 2) / 40;
+          const x = (e.clientX - rect.left - rect.width / 2) / 50;
+          const y = (e.clientY - rect.top - rect.height / 2) / 50;
 
           gsap.to(card, {
-            rotationX: y * 0.8,
-            rotationY: x * 0.8,
-            duration: 0.4,
-            transformPerspective: 1200,
+            rotationX: y * 0.5,
+            rotationY: x * 0.5,
+            duration: 0.3,
+            transformPerspective: 1000,
             ease: 'power2.out',
+            overwrite: 'auto',
           });
 
           gsap.to(card, {
-            y: -12,
-            boxShadow: '0 30px 80px rgba(37, 99, 235, 0.3)',
-            scale: 1.02,
-            duration: 0.4,
+            y: -10,
+            boxShadow: '0 25px 60px rgba(37, 99, 235, 0.25)',
+            duration: 0.3,
             ease: 'power2.out',
+            overwrite: 'auto',
           });
         };
 
@@ -68,10 +72,10 @@ export default function ProjectsModern({ projects }: ProjectsModernProps) {
             rotationX: 0,
             rotationY: 0,
             y: 0,
-            boxShadow: '0 8px 32px rgba(0, 0, 0, 0.2)',
-            scale: 1,
-            duration: 0.6,
-            ease: 'cubic-bezier(0.34, 1.56, 0.64, 1)',
+            boxShadow: '0 8px 24px rgba(0, 0, 0, 0.15)',
+            duration: 0.4,
+            ease: 'power2.inOut',
+            overwrite: 'auto',
           });
         };
 

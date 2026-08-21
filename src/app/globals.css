@@ -260,6 +260,50 @@
     will-change: transform;
   }
 
+  /* GPU Acceleration for Animated Elements */
+  [class*="animate"], [class*="scroll"], .highlight-item, .card-modern, .btn-primary {
+    will-change: transform, opacity;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Scroll animation optimizations */
+  [class*="scrollTrigger"], [class*="scroll-reveal"], section > div {
+    will-change: auto;
+  }
+
+  /* Content sections with smooth scroll animations */
+  section > div {
+    transform-origin: center;
+  }
+
+  /* 3D Transform performance */
+  [style*="perspective"], [style*="preserve-3d"] {
+    backface-visibility: hidden;
+    will-change: transform;
+  }
+
+  /* Smooth scroll animation timing */
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+
+  /* Reduced motion support */
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      animation: none !important;
+      transition: none !important;
+    }
+  }
+
+  /* Performance: Remove will-change after animation completes */
+  .gsap-animation-complete {
+    will-change: auto;
+  }
+
   /* Animated Background */
   .animated-grid {
     position: relative;

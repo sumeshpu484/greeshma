@@ -65,8 +65,8 @@ export default function PhotoFrame({
           rotationX: 0,
           rotationY: 0,
           boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 1px rgba(255, 255, 255, 0.1)',
-          duration: 0.7,
-          ease: 'cubic-bezier(0.34, 1.56, 0.64, 1)',
+          duration: 0.5,
+          ease: 'power2.inOut',
         });
       };
 

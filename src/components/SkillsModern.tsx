@@ -58,20 +58,24 @@ export default function SkillsModern() {
       skillBarsRef.current.forEach((bar, i) => {
         if (!bar) return;
 
-        gsap.from(bar, {
-          width: '0%',
-          opacity: 0,
-          duration: 1.5,
-          delay: i * 0.08,
-          ease: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)',
-          scrollTrigger: {
-            trigger: bar,
-            start: 'top 90%',
-            end: 'top 40%',
-            scrub: 0.8,
-            once: false,
-          },
-        });
+        gsap.fromTo(
+          bar,
+          { scaleX: 0, opacity: 0 },
+          {
+            scaleX: 1,
+            opacity: 1,
+            duration: 0.8,
+            delay: i * 0.06,
+            ease: 'power2.out',
+            transformOrigin: 'left center',
+            scrollTrigger: {
+              trigger: bar,
+              start: 'top 80%',
+              toggleActions: 'play none none reverse',
+              markers: false,
+            },
+          }
+        );
       });
     }, containerRef);
 

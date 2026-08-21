@@ -82,48 +82,66 @@ export default function WorkExperienceModern({
 
     const ctx = gsap.context(() => {
       // Header animation
-      gsap.from('.experience-header', {
-        opacity: 0,
-        y: 30,
-        duration: 0.6,
-        scrollTrigger: {
-          trigger: '.experience-header',
-          start: 'top 85%',
-          toggleActions: 'play none none reverse',
-        },
-      });
+      gsap.fromTo(
+        '.experience-header',
+        { opacity: 0, y: 20 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.6,
+          ease: 'power2.out',
+          scrollTrigger: {
+            trigger: '.experience-header',
+            start: 'top 85%',
+            toggleActions: 'play none none reverse',
+            markers: false,
+          },
+        }
+      );
 
-      // Timeline animation
+      // Timeline items stagger
       itemsRef.current.forEach((item, idx) => {
         if (!item) return;
 
-        gsap.from(item, {
-          opacity: 0,
-          x: idx % 2 === 0 ? -100 : 100,
-          duration: 1.4,
-          delay: idx * 0.12,
-          ease: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)',
-          scrollTrigger: {
-            trigger: item,
-            start: 'top 90%',
-            end: 'top 40%',
-            scrub: 0.9,
-            once: false,
+        gsap.fromTo(
+          item,
+          {
+            opacity: 0,
+            x: idx % 2 === 0 ? -50 : 50,
           },
-        });
+          {
+            opacity: 1,
+            x: 0,
+            duration: 0.7,
+            delay: idx * 0.08,
+            ease: 'power2.out',
+            scrollTrigger: {
+              trigger: item,
+              start: 'top 85%',
+              toggleActions: 'play none none reverse',
+              markers: false,
+            },
+          }
+        );
       });
 
       // Timeline line animation
-      gsap.from('.experience-timeline-line', {
-        scaleY: 0,
-        transformOrigin: 'top',
-        duration: 1,
-        scrollTrigger: {
-          trigger: '.experience-timeline',
-          start: 'top 70%',
-          toggleActions: 'play none none reverse',
-        },
-      });
+      gsap.fromTo(
+        '.experience-timeline-line',
+        { scaleY: 0 },
+        {
+          scaleY: 1,
+          transformOrigin: 'top',
+          duration: 0.8,
+          ease: 'power2.out',
+          scrollTrigger: {
+            trigger: '.experience-timeline',
+            start: 'top 75%',
+            toggleActions: 'play none none reverse',
+            markers: false,
+          },
+        }
+      );
     }, containerRef);
 
     return () => ctx.revert();

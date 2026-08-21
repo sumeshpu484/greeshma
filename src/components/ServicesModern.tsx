@@ -25,43 +25,46 @@ export default function ServicesModern() {
     if (!containerRef.current) return;
 
     const ctx = gsap.context(() => {
-      // Stagger cards on scroll reveal
       cardsRef.current.forEach((card, i) => {
         if (!card) return;
 
-        gsap.from(card, {
-          opacity: 0,
-          y: 100,
-          duration: 1.5,
-          delay: i * 0.15,
-          ease: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)',
-          scrollTrigger: {
-            trigger: card,
-            start: 'top 95%',
-            end: 'top 45%',
-            scrub: 1,
-            once: false,
-          },
-        });
+        // Smooth stagger reveal on scroll
+        gsap.fromTo(
+          card,
+          { opacity: 0, y: 80 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.7,
+            delay: i * 0.1,
+            ease: 'power2.out',
+            scrollTrigger: {
+              trigger: card,
+              start: 'top 85%',
+              toggleActions: 'play none none reverse',
+              markers: false,
+            },
+          }
+        );
 
-        // Smooth 3D hover effect
+        // Optimized hover effect
         card.addEventListener('mouseenter', () => {
           gsap.to(card, {
-            y: -15,
-            boxShadow: '0 25px 70px rgba(37, 99, 235, 0.35)',
-            scale: 1.03,
-            duration: 0.5,
-            ease: 'cubic-bezier(0.34, 1.56, 0.64, 1)',
+            y: -12,
+            boxShadow: '0 20px 50px rgba(37, 99, 235, 0.25)',
+            duration: 0.3,
+            ease: 'power2.out',
+            overwrite: 'auto',
           });
         });
 
         card.addEventListener('mouseleave', () => {
           gsap.to(card, {
             y: 0,
-            boxShadow: '0 8px 32px rgba(0, 0, 0, 0.2)',
-            scale: 1,
-            duration: 0.5,
-            ease: 'cubic-bezier(0.34, 1.56, 0.64, 1)',
+            boxShadow: '0 8px 24px rgba(0, 0, 0, 0.15)',
+            duration: 0.3,
+            ease: 'power2.out',
+            overwrite: 'auto',
           });
         });
       });

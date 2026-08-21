@@ -60,36 +60,45 @@ export default function PhotoGallery({
 
     const ctx = gsap.context(() => {
       // Header animation
-      gsap.from('.gallery-header', {
-        opacity: 0,
-        y: 30,
-        duration: 0.6,
-        scrollTrigger: {
-          trigger: '.gallery-header',
-          start: 'top 85%',
-          toggleActions: 'play none none reverse',
-        },
-      });
+      gsap.fromTo(
+        '.gallery-header',
+        { opacity: 0, y: 20 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.6,
+          ease: 'power2.out',
+          scrollTrigger: {
+            trigger: '.gallery-header',
+            start: 'top 85%',
+            toggleActions: 'play none none reverse',
+            markers: false,
+          },
+        }
+      );
 
-      // Ultra-smooth photos stagger animation
+      // Smooth photo reveal with stagger
       photosRef.current.forEach((photo, idx) => {
         if (!photo) return;
 
-        gsap.from(photo, {
-          opacity: 0,
-          y: 80,
-          scale: 0.9,
-          duration: 1.3,
-          delay: idx * 0.15,
-          ease: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)',
-          scrollTrigger: {
-            trigger: photo,
-            start: 'top 90%',
-            end: 'top 40%',
-            scrub: 0.8,
-            once: false,
-          },
-        });
+        gsap.fromTo(
+          photo,
+          { opacity: 0, y: 60, scale: 0.95 },
+          {
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            duration: 0.7,
+            delay: idx * 0.1,
+            ease: 'power2.out',
+            scrollTrigger: {
+              trigger: photo,
+              start: 'top 85%',
+              toggleActions: 'play none none reverse',
+              markers: false,
+            },
+          }
+        );
       });
     }, containerRef);
 

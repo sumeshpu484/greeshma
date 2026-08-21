@@ -51,20 +51,23 @@ export default function TestimonialsModern() {
       cardsRef.current.forEach((card, i) => {
         if (!card) return;
 
-        gsap.from(card, {
-          opacity: 0,
-          y: 80,
-          duration: 1.3,
-          delay: i * 0.12,
-          ease: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)',
-          scrollTrigger: {
-            trigger: card,
-            start: 'top 90%',
-            end: 'top 40%',
-            scrub: 0.8,
-            once: false,
-          },
-        });
+        gsap.fromTo(
+          card,
+          { opacity: 0, y: 60 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.7,
+            delay: i * 0.1,
+            ease: 'power2.out',
+            scrollTrigger: {
+              trigger: card,
+              start: 'top 85%',
+              toggleActions: 'play none none reverse',
+              markers: false,
+            },
+          }
+        );
       });
     }, containerRef);
 

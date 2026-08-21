@@ -43,49 +43,58 @@ export default function AboutSection({
     if (!containerRef.current) return;
 
     const ctx = gsap.context(() => {
-      // Ultra-smooth content animation with scroll scrub
-      gsap.from(contentRef.current, {
-        opacity: 0,
-        x: -80,
-        duration: 1.5,
-        ease: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)',
-        scrollTrigger: {
-          trigger: contentRef.current,
-          start: 'top 85%',
-          end: 'top 35%',
-          scrub: 1,
-          once: false,
-        },
-      });
+      // Content slide-in with optimized performance
+      gsap.fromTo(
+        contentRef.current,
+        { opacity: 0, x: -60 },
+        {
+          opacity: 1,
+          x: 0,
+          duration: 0.8,
+          ease: 'power2.out',
+          scrollTrigger: {
+            trigger: contentRef.current,
+            start: 'top 80%',
+            toggleActions: 'play none none reverse',
+            markers: false,
+          },
+        }
+      );
 
-      // Ultra-smooth photo animation with scale and scroll scrub
-      gsap.from(photoRef.current, {
-        opacity: 0,
-        x: 80,
-        scale: 0.85,
-        duration: 1.5,
-        delay: 0.1,
-        ease: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)',
-        scrollTrigger: {
-          trigger: photoRef.current,
-          start: 'top 85%',
-          end: 'top 35%',
-          scrub: 1,
-          once: false,
-        },
-      });
+      // Photo scale-in with 3D acceleration
+      gsap.fromTo(
+        photoRef.current,
+        { opacity: 0, scale: 0.9, y: 30 },
+        {
+          opacity: 1,
+          scale: 1,
+          y: 0,
+          duration: 0.8,
+          ease: 'power2.out',
+          scrollTrigger: {
+            trigger: photoRef.current,
+            start: 'top 80%',
+            toggleActions: 'play none none reverse',
+            markers: false,
+          },
+        }
+      );
 
-      // Smooth stagger highlights
+      // Highlights stagger animation
       gsap.from('.highlight-item', {
         opacity: 0,
-        y: 30,
-        duration: 0.7,
-        stagger: 0.1,
-        ease: 'cubic-bezier(0.34, 1.56, 0.64, 1)',
+        y: 20,
+        duration: 0.5,
+        stagger: {
+          amount: 0.3,
+          from: 'start',
+        },
+        ease: 'power2.out',
         scrollTrigger: {
           trigger: containerRef.current,
-          start: 'top 65%',
+          start: 'top 70%',
           toggleActions: 'play none none reverse',
+          markers: false,
         },
       });
     }, containerRef);
