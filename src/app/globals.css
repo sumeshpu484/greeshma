@@ -79,13 +79,13 @@
   }
 
   .btn-secondary {
-    @apply inline-flex items-center justify-center px-8 py-3 border-2 border-primary-500/50 text-primary-300 font-semibold rounded-xl transition-all duration-300;
-    @apply hover:border-primary-400 hover:text-primary-200 hover:bg-primary-500/10 active:scale-95;
+    @apply inline-flex items-center justify-center px-8 py-3 border-2 border-primary-500/50 text-primary-400 font-semibold rounded-xl transition-all duration-300;
+    @apply hover:border-primary-400 hover:text-primary-400 hover:bg-primary-500/10 active:scale-95;
   }
 
   .btn-ghost {
-    @apply inline-flex items-center justify-center px-8 py-3 text-primary-300 font-semibold transition-all duration-300;
-    @apply hover:text-primary-200 hover:translate-x-2;
+    @apply inline-flex items-center justify-center px-8 py-3 text-primary-400 font-semibold transition-all duration-300;
+    @apply hover:text-primary-500 hover:translate-x-2;
   }
 
   .section-divider {
@@ -142,4 +142,14 @@
 
 ::-webkit-scrollbar-thumb:hover {
   background: linear-gradient(to bottom, #5b7fff, #c647ff);
+}
+
+/* Hide scrollbar on specific elements */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }

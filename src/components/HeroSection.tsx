@@ -70,7 +70,7 @@ export default function HeroSection({ profile, ctaButtons }: HeroSectionProps) {
 
             {/* Title */}
             <motion.div {...titleAnimation}>
-              <p className="text-xl md:text-2xl lg:text-3xl font-semibold text-primary-300">
+              <p className="text-xl md:text-2xl lg:text-3xl font-semibold text-primary-400">
                 {profile.title}
               </p>
             </motion.div>
