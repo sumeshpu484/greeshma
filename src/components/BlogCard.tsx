@@ -4,6 +4,9 @@ import { BlogPost } from '@/types';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 
+
+
+
 export default function BlogCard({ post }: { post: BlogPost }) {
   return (
     <motion.article
