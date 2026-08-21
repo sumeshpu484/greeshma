@@ -18,10 +18,20 @@ export async function POST(req: Request) {
     });
 
     return Response.json({ success: true, id: submission.id });
-  } catch (error) {
+  } catch (error: any) {
+    // Handle database not initialized
+    if (error?.cause?.message?.includes('does not exist') ||
+        error?.message?.includes('does not exist')) {
+      console.warn('Database not initialized');
+      return Response.json(
+        { success: false, error: 'Database not ready. Please initialize Payload CMS.' },
+        { status: 503 } // Service unavailable
+      );
+    }
+
     console.error('Contact form error:', error);
     return Response.json(
-      { success: false, error: 'Failed to submit form' },
+      { success: false, error: 'Failed to submit form. Please try again later.' },
       { status: 500 }
     );
   }
