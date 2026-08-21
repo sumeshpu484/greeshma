@@ -43,31 +43,35 @@ export default function AboutSection({
     if (!containerRef.current) return;
 
     const ctx = gsap.context(() => {
-      // Smooth content animation
+      // Ultra-smooth content animation with scroll scrub
       gsap.from(contentRef.current, {
         opacity: 0,
-        x: -60,
-        duration: 1,
-        ease: 'cubic-bezier(0.34, 1.56, 0.64, 1)',
+        x: -80,
+        duration: 1.5,
+        ease: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)',
         scrollTrigger: {
           trigger: contentRef.current,
-          start: 'top 75%',
-          toggleActions: 'play none none reverse',
+          start: 'top 85%',
+          end: 'top 35%',
+          scrub: 1,
+          once: false,
         },
       });
 
-      // Smooth photo animation with scale
+      // Ultra-smooth photo animation with scale and scroll scrub
       gsap.from(photoRef.current, {
         opacity: 0,
-        x: 60,
-        scale: 0.9,
-        duration: 1,
-        delay: 0.15,
-        ease: 'cubic-bezier(0.34, 1.56, 0.64, 1)',
+        x: 80,
+        scale: 0.85,
+        duration: 1.5,
+        delay: 0.1,
+        ease: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)',
         scrollTrigger: {
           trigger: photoRef.current,
-          start: 'top 75%',
-          toggleActions: 'play none none reverse',
+          start: 'top 85%',
+          end: 'top 35%',
+          scrub: 1,
+          once: false,
         },
       });
 

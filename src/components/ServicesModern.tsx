@@ -31,14 +31,16 @@ export default function ServicesModern() {
 
         gsap.from(card, {
           opacity: 0,
-          y: 60,
-          duration: 0.8,
-          delay: i * 0.12,
-          ease: 'cubic-bezier(0.34, 1.56, 0.64, 1)',
+          y: 100,
+          duration: 1.5,
+          delay: i * 0.15,
+          ease: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)',
           scrollTrigger: {
             trigger: card,
-            start: 'top 80%',
-            toggleActions: 'play none none reverse',
+            start: 'top 95%',
+            end: 'top 45%',
+            scrub: 1,
+            once: false,
           },
         });
 

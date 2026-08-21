@@ -61,13 +61,15 @@ export default function SkillsModern() {
         gsap.from(bar, {
           width: '0%',
           opacity: 0,
-          duration: 1,
-          delay: i * 0.05,
-          ease: 'power2.out',
+          duration: 1.5,
+          delay: i * 0.08,
+          ease: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)',
           scrollTrigger: {
             trigger: bar,
-            start: 'top 80%',
-            toggleActions: 'play none none reverse',
+            start: 'top 90%',
+            end: 'top 40%',
+            scrub: 0.8,
+            once: false,
           },
         });
       });

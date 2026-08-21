@@ -53,13 +53,16 @@ export default function TestimonialsModern() {
 
         gsap.from(card, {
           opacity: 0,
-          y: 40,
-          duration: 0.6,
-          delay: i * 0.1,
+          y: 80,
+          duration: 1.3,
+          delay: i * 0.12,
+          ease: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)',
           scrollTrigger: {
             trigger: card,
-            start: 'top 80%',
-            toggleActions: 'play none none reverse',
+            start: 'top 90%',
+            end: 'top 40%',
+            scrub: 0.8,
+            once: false,
           },
         });
       });

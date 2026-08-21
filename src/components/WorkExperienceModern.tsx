@@ -99,13 +99,16 @@ export default function WorkExperienceModern({
 
         gsap.from(item, {
           opacity: 0,
-          x: idx % 2 === 0 ? -50 : 50,
-          duration: 0.7,
-          delay: idx * 0.1,
+          x: idx % 2 === 0 ? -100 : 100,
+          duration: 1.4,
+          delay: idx * 0.12,
+          ease: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)',
           scrollTrigger: {
             trigger: item,
-            start: 'top 80%',
-            toggleActions: 'play none none reverse',
+            start: 'top 90%',
+            end: 'top 40%',
+            scrub: 0.9,
+            once: false,
           },
         });
       });

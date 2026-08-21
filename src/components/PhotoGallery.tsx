@@ -71,19 +71,23 @@ export default function PhotoGallery({
         },
       });
 
-      // Photos stagger animation
+      // Ultra-smooth photos stagger animation
       photosRef.current.forEach((photo, idx) => {
         if (!photo) return;
 
         gsap.from(photo, {
           opacity: 0,
-          y: 40,
-          duration: 0.7,
+          y: 80,
+          scale: 0.9,
+          duration: 1.3,
           delay: idx * 0.15,
+          ease: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)',
           scrollTrigger: {
             trigger: photo,
-            start: 'top 80%',
-            toggleActions: 'play none none reverse',
+            start: 'top 90%',
+            end: 'top 40%',
+            scrub: 0.8,
+            once: false,
           },
         });
       });
