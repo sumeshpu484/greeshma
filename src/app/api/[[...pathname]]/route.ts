@@ -1,45 +1,80 @@
-// Payload CMS API route - returns empty collections
-// Note: Payload is configured but returns mock data via fallback in lib/payload.ts
+// Payload CMS API endpoints - return empty collections
+// Uses mock data fallback in lib/payload.ts during build/initial load
 
-const emptyCollection = { docs: [], totalDocs: 0, limit: 100, totalPages: 0, page: 1 };
-
-const apiResponses: Record<string, any> = {
-  '/api/profile': emptyCollection,
-  '/api/projects': emptyCollection,
-  '/api/blog-posts': emptyCollection,
-  '/api/social-links': emptyCollection,
-  '/api/cta-buttons': emptyCollection,
+const HEADERS = {
+  'Content-Type': 'application/json',
+  'Cache-Control': 'no-cache, no-store, must-revalidate',
 };
 
-export const GET = async (req: Request) => {
-  const url = new URL(req.url);
-  const pathname = url.pathname;
-
-  // Return empty collection for any API endpoint
-  const response = emptyCollection;
-  return new Response(JSON.stringify(response), {
-    status: 200,
-    headers: { 'Content-Type': 'application/json' },
-  });
+const emptyResponse = {
+  docs: [],
+  totalDocs: 0,
+  limit: 100,
+  totalPages: 0,
+  page: 1,
+  pagingCounter: 1,
+  hasPrevPage: false,
+  hasNextPage: false,
+  prevPage: null,
+  nextPage: null,
 };
 
-export const POST = async (req: Request) => {
-  return new Response(JSON.stringify({ docs: [] }), {
-    status: 200,
-    headers: { 'Content-Type': 'application/json' },
-  });
-};
+export async function GET(request: Request) {
+  try {
+    return new Response(JSON.stringify(emptyResponse), {
+      status: 200,
+      headers: HEADERS,
+    });
+  } catch (error) {
+    console.error('API error:', error);
+    return new Response(JSON.stringify({ docs: [], error: 'Internal Server Error' }), {
+      status: 500,
+      headers: HEADERS,
+    });
+  }
+}
 
-export const PATCH = async (req: Request) => {
-  return new Response(JSON.stringify({ docs: [] }), {
-    status: 200,
-    headers: { 'Content-Type': 'application/json' },
-  });
-};
+export async function POST(request: Request) {
+  try {
+    return new Response(JSON.stringify(emptyResponse), {
+      status: 200,
+      headers: HEADERS,
+    });
+  } catch (error) {
+    console.error('API error:', error);
+    return new Response(JSON.stringify({ docs: [], error: 'Internal Server Error' }), {
+      status: 500,
+      headers: HEADERS,
+    });
+  }
+}
 
-export const DELETE = async (req: Request) => {
-  return new Response(JSON.stringify({ docs: [] }), {
-    status: 200,
-    headers: { 'Content-Type': 'application/json' },
-  });
-};
+export async function PATCH(request: Request) {
+  try {
+    return new Response(JSON.stringify(emptyResponse), {
+      status: 200,
+      headers: HEADERS,
+    });
+  } catch (error) {
+    console.error('API error:', error);
+    return new Response(JSON.stringify({ docs: [], error: 'Internal Server Error' }), {
+      status: 500,
+      headers: HEADERS,
+    });
+  }
+}
+
+export async function DELETE(request: Request) {
+  try {
+    return new Response(JSON.stringify(emptyResponse), {
+      status: 200,
+      headers: HEADERS,
+    });
+  } catch (error) {
+    console.error('API error:', error);
+    return new Response(JSON.stringify({ docs: [], error: 'Internal Server Error' }), {
+      status: 500,
+      headers: HEADERS,
+    });
+  }
+}
