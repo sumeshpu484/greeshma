@@ -5,6 +5,14 @@ export async function POST(req: Request) {
     const payload = await initializePayload();
     const body = await req.json();
 
+    if (!payload) {
+      console.warn('Payload not available for contact submission');
+      return Response.json(
+        { success: false, error: 'Database initializing. Please try again in a moment.' },
+        { status: 503 }
+      );
+    }
+
     const submission = await payload.create({
       collection: 'contact-submissions',
       data: {
@@ -19,17 +27,8 @@ export async function POST(req: Request) {
 
     return Response.json({ success: true, id: submission.id });
   } catch (error: any) {
-    // Handle database not initialized
-    if (error?.cause?.message?.includes('does not exist') ||
-        error?.message?.includes('does not exist')) {
-      console.warn('Database not initialized');
-      return Response.json(
-        { success: false, error: 'Database not ready. Please initialize Payload CMS.' },
-        { status: 503 } // Service unavailable
-      );
-    }
+    console.error('Contact form error:', error?.message);
 
-    console.error('Contact form error:', error);
     return Response.json(
       { success: false, error: 'Failed to submit form. Please try again later.' },
       { status: 500 }

@@ -4,6 +4,15 @@ export async function GET(req: Request) {
   try {
     const payload = await initializePayload();
 
+    if (!payload) {
+      console.warn('Payload not available, returning mock data');
+      return Response.json({
+        docs: [],
+        totalDocs: 0,
+        message: 'Database initializing'
+      });
+    }
+
     const submissions = await payload.find({
       collection: 'contact-submissions',
       sort: '-createdAt',
@@ -11,17 +20,16 @@ export async function GET(req: Request) {
 
     return Response.json(submissions);
   } catch (error: any) {
-    // Handle database not initialized or table doesn't exist
-    if (error?.cause?.message?.includes('does not exist') ||
-        error?.message?.includes('does not exist')) {
-      console.warn('Database not initialized, returning empty array');
-      return Response.json({ docs: [], totalDocs: 0 });
-    }
+    console.warn('Submissions fetch error (returning fallback):', error?.message);
 
-    console.error('Submissions fetch error:', error);
+    // Always return a valid response, never fail
     return Response.json(
-      { docs: [], totalDocs: 0, error: 'Database not ready' },
-      { status: 200 } // Return 200 to not break the app
+      {
+        docs: [],
+        totalDocs: 0,
+        message: 'Database temporarily unavailable'
+      },
+      { status: 200 }
     );
   }
 }
