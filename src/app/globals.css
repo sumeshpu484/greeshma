@@ -120,12 +120,13 @@
     50% { background-position: 100% 50%; }
   }
 
-  /* Modern Buttons */
+  /* Modern Buttons with Enhanced Animations */
   .btn-primary {
     @apply relative px-8 py-3 font-semibold text-white rounded-full overflow-hidden;
     background: linear-gradient(135deg, var(--accent-blue) 0%, var(--accent-cyan) 100%);
     box-shadow: 0 8px 24px rgba(37, 99, 235, 0.35);
-    transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+    transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    position: relative;
   }
 
   .btn-primary::before {
@@ -136,12 +137,21 @@
     width: 100%;
     height: 100%;
     background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-    transition: left 0.6s;
+    transition: left 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  .btn-primary::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255,255,255,0.1) 0%, transparent 80%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
   }
 
   .btn-primary:hover {
     @apply scale-105 -translate-y-1;
-    box-shadow: 0 16px 40px rgba(37, 99, 235, 0.5), 0 0 30px rgba(6, 182, 212, 0.3);
+    box-shadow: 0 20px 50px rgba(37, 99, 235, 0.6), 0 0 40px rgba(6, 182, 212, 0.4), inset 0 1px 0 rgba(255,255,255,0.2);
   }
 
   .btn-primary:hover::before {
@@ -150,31 +160,60 @@
 
   .btn-primary:active {
     @apply scale-95;
+    transition: all 0.15s cubic-bezier(0.34, 1.56, 0.64, 1);
   }
 
   .btn-secondary {
-    @apply px-8 py-3 font-semibold rounded-full border-2 transition-all duration-300;
-    @apply border-white/[0.2] text-white hover:border-white/[0.4] hover:bg-white/[0.08];
+    @apply px-8 py-3 font-semibold rounded-full border-2 transition-all;
+    @apply border-white/[0.2] text-white;
+    transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  .btn-secondary:hover {
+    @apply border-white/[0.5] bg-white/[0.1];
+    box-shadow: 0 8px 32px rgba(255,255,255,0.1);
+    transform: translateY(-2px);
+  }
+
+  .btn-secondary:active {
+    @apply scale-95;
+    transition: all 0.15s ease;
   }
 
   .btn-ghost {
-    @apply px-8 py-3 font-semibold text-white transition-all duration-300;
-    @apply hover:text-transparent hover:bg-gradient-to-r hover:from-blue-400 hover:to-purple-400 hover:bg-clip-text;
+    @apply px-8 py-3 font-semibold text-white;
+    transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
   }
 
-  /* Modern Cards */
+  .btn-ghost:hover {
+    @apply -translate-x-1;
+    background: linear-gradient(135deg, rgba(37, 99, 235, 0.2), rgba(168, 85, 247, 0.2));
+    border-radius: 0.75rem;
+    padding: 0.75rem 2rem;
+  }
+
+  /* Modern Cards with Smooth Animations */
   .card-modern {
     @apply glass-morphism rounded-2xl p-6 md:p-8;
+    transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  .card-modern:hover {
+    @apply border-white/[0.3];
+    box-shadow: 0 20px 60px rgba(37, 99, 235, 0.2), inset 0 1px 2px rgba(255, 255, 255, 0.2);
+    transform: translateY(-8px) scale(1.02);
   }
 
   .card-modern-3d {
     @apply neuro-soft p-6 md:p-8;
-    perspective: 1000px;
+    perspective: 1200px;
     transform-style: preserve-3d;
+    transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
   }
 
   .card-modern-3d:hover {
-    transform: translateZ(20px) rotateX(2deg) rotateY(2deg);
+    transform: translateZ(25px) rotateX(3deg) rotateY(3deg) translateY(-6px);
+    box-shadow: -15px -15px 40px rgba(255, 255, 255, 0.1), 15px 15px 40px rgba(0, 0, 0, 0.5);
   }
 
   /* Text Hierarchy */
@@ -242,6 +281,91 @@
     }
   }
 
+  /* Smooth Animation Curves */
+  @keyframes smoothFadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(40px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes smoothFadeInDown {
+    from {
+      opacity: 0;
+      transform: translateY(-40px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes smoothFadeInLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-40px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes smoothFadeInRight {
+    from {
+      opacity: 0;
+      transform: translateX(40px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes smoothScaleIn {
+    from {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @keyframes smoothGlowPulse {
+    0%, 100% {
+      box-shadow: 0 0 20px rgba(37, 99, 235, 0.3), inset 0 1px 1px rgba(255, 255, 255, 0.1);
+    }
+    50% {
+      box-shadow: 0 0 40px rgba(37, 99, 235, 0.5), inset 0 1px 2px rgba(255, 255, 255, 0.15);
+    }
+  }
+
+  @keyframes smoothFloat {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  @keyframes smoothRotateIn {
+    from {
+      opacity: 0;
+      transform: rotate(-5deg) scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: rotate(0deg) scale(1);
+    }
+  }
+
   /* Scroll Reveal */
   .scroll-reveal {
     opacity: 0;
@@ -251,7 +375,7 @@
   .scroll-reveal.revealed {
     opacity: 1;
     transform: translateY(0);
-    transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+    transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
   }
 
   /* Focus States */

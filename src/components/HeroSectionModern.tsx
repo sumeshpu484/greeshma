@@ -20,52 +20,62 @@ export default function HeroSectionModern({ profile, ctaButtons }: HeroSectionMo
     if (!containerRef.current) return;
 
     const ctx = gsap.context(() => {
-      // Text animation
+      // Smooth, staggered text animations with better easing
       gsap.from('.hero-title', {
         opacity: 0,
-        y: 50,
-        duration: 0.8,
-        ease: 'power3.out',
+        y: 60,
+        duration: 1.2,
+        ease: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)',
       });
 
       gsap.from('.hero-subtitle', {
         opacity: 0,
-        y: 30,
-        duration: 0.8,
-        delay: 0.2,
-        ease: 'power3.out',
+        y: 40,
+        duration: 1,
+        delay: 0.15,
+        ease: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)',
       });
 
       gsap.from('.hero-description', {
         opacity: 0,
-        y: 30,
-        duration: 0.8,
-        delay: 0.4,
-        ease: 'power3.out',
-      });
-
-      gsap.from('.hero-buttons button', {
-        opacity: 0,
-        y: 20,
-        duration: 0.6,
-        stagger: 0.1,
-        delay: 0.6,
-        ease: 'power3.out',
-      });
-
-      // Image animation with parallax
-      gsap.from('.hero-image', {
-        opacity: 0,
-        scale: 0.8,
+        y: 40,
         duration: 1,
         delay: 0.3,
-        ease: 'power3.out',
+        ease: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)',
       });
 
-      // Floating animation
+      // Button animations with smooth stagger
+      gsap.from('.hero-buttons button', {
+        opacity: 0,
+        y: 30,
+        duration: 0.8,
+        stagger: 0.12,
+        delay: 0.45,
+        ease: 'cubic-bezier(0.34, 1.56, 0.64, 1)',
+      });
+
+      // Smooth image reveal with scale
+      gsap.from('.hero-image', {
+        opacity: 0,
+        scale: 0.85,
+        duration: 1.3,
+        delay: 0.2,
+        ease: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+      });
+
+      // Smooth floating animation
       gsap.to('.hero-image', {
-        y: -20,
-        duration: 3,
+        y: -15,
+        duration: 4,
+        repeat: -1,
+        yoyo: true,
+        ease: 'sine.inOut',
+      });
+
+      // Smooth scroll indicator bounce
+      gsap.to('.scroll-indicator', {
+        y: 8,
+        duration: 1.5,
         repeat: -1,
         yoyo: true,
         ease: 'sine.inOut',

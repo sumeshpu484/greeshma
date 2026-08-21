@@ -43,40 +43,44 @@ export default function AboutSection({
     if (!containerRef.current) return;
 
     const ctx = gsap.context(() => {
-      // Content animation
+      // Smooth content animation
       gsap.from(contentRef.current, {
         opacity: 0,
-        x: -50,
-        duration: 0.8,
+        x: -60,
+        duration: 1,
+        ease: 'cubic-bezier(0.34, 1.56, 0.64, 1)',
         scrollTrigger: {
           trigger: contentRef.current,
-          start: 'top 80%',
+          start: 'top 75%',
           toggleActions: 'play none none reverse',
         },
       });
 
-      // Photo animation
+      // Smooth photo animation with scale
       gsap.from(photoRef.current, {
         opacity: 0,
-        x: 50,
-        duration: 0.8,
-        delay: 0.2,
+        x: 60,
+        scale: 0.9,
+        duration: 1,
+        delay: 0.15,
+        ease: 'cubic-bezier(0.34, 1.56, 0.64, 1)',
         scrollTrigger: {
           trigger: photoRef.current,
-          start: 'top 80%',
+          start: 'top 75%',
           toggleActions: 'play none none reverse',
         },
       });
 
-      // Stagger highlights
+      // Smooth stagger highlights
       gsap.from('.highlight-item', {
         opacity: 0,
-        y: 20,
-        duration: 0.6,
-        stagger: 0.08,
+        y: 30,
+        duration: 0.7,
+        stagger: 0.1,
+        ease: 'cubic-bezier(0.34, 1.56, 0.64, 1)',
         scrollTrigger: {
           trigger: containerRef.current,
-          start: 'top 70%',
+          start: 'top 65%',
           toggleActions: 'play none none reverse',
         },
       });

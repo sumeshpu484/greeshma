@@ -31,30 +31,35 @@ export default function ServicesModern() {
 
         gsap.from(card, {
           opacity: 0,
-          y: 50,
-          duration: 0.6,
-          delay: i * 0.1,
+          y: 60,
+          duration: 0.8,
+          delay: i * 0.12,
+          ease: 'cubic-bezier(0.34, 1.56, 0.64, 1)',
           scrollTrigger: {
             trigger: card,
-            start: 'top 85%',
+            start: 'top 80%',
             toggleActions: 'play none none reverse',
           },
         });
 
-        // Hover 3D effect
+        // Smooth 3D hover effect
         card.addEventListener('mouseenter', () => {
           gsap.to(card, {
-            y: -12,
-            boxShadow: '0 20px 60px rgba(37, 99, 235, 0.25)',
-            duration: 0.3,
+            y: -15,
+            boxShadow: '0 25px 70px rgba(37, 99, 235, 0.35)',
+            scale: 1.03,
+            duration: 0.5,
+            ease: 'cubic-bezier(0.34, 1.56, 0.64, 1)',
           });
         });
 
         card.addEventListener('mouseleave', () => {
           gsap.to(card, {
             y: 0,
-            boxShadow: '0 8px 24px rgba(0, 0, 0, 0.2)',
-            duration: 0.3,
+            boxShadow: '0 8px 32px rgba(0, 0, 0, 0.2)',
+            scale: 1,
+            duration: 0.5,
+            ease: 'cubic-bezier(0.34, 1.56, 0.64, 1)',
           });
         });
       });

@@ -32,15 +32,26 @@ export default function ProjectsModern({ projects }: ProjectsModernProps) {
 
         // Hover 3D effect
         const onMouseMove = (e: MouseEvent) => {
+          if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
           const rect = card.getBoundingClientRect();
-          const x = (e.clientX - rect.left - rect.width / 2) / 50;
-          const y = (e.clientY - rect.top - rect.height / 2) / 50;
+          const x = (e.clientX - rect.left - rect.width / 2) / 40;
+          const y = (e.clientY - rect.top - rect.height / 2) / 40;
 
           gsap.to(card, {
-            rotationX: y,
-            rotationY: x,
-            duration: 0.3,
-            transformPerspective: 1000,
+            rotationX: y * 0.8,
+            rotationY: x * 0.8,
+            duration: 0.4,
+            transformPerspective: 1200,
+            ease: 'power2.out',
+          });
+
+          gsap.to(card, {
+            y: -12,
+            boxShadow: '0 30px 80px rgba(37, 99, 235, 0.3)',
+            scale: 1.02,
+            duration: 0.4,
+            ease: 'power2.out',
           });
         };
 
@@ -48,8 +59,11 @@ export default function ProjectsModern({ projects }: ProjectsModernProps) {
           gsap.to(card, {
             rotationX: 0,
             rotationY: 0,
-            duration: 0.4,
-            ease: 'power2.out',
+            y: 0,
+            boxShadow: '0 8px 32px rgba(0, 0, 0, 0.2)',
+            scale: 1,
+            duration: 0.6,
+            ease: 'cubic-bezier(0.34, 1.56, 0.64, 1)',
           });
         };
 

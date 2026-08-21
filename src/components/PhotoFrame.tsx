@@ -38,16 +38,25 @@ export default function PhotoFrame({
     const ctx = gsap.context(() => {
       const onMouseMove = (e: MouseEvent) => {
         if (!containerRef.current) return;
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
         const rect = containerRef.current.getBoundingClientRect();
-        const x = (e.clientX - rect.left - rect.width / 2) / 40;
-        const y = (e.clientY - rect.top - rect.height / 2) / 40;
+        const x = (e.clientX - rect.left - rect.width / 2) / 35;
+        const y = (e.clientY - rect.top - rect.height / 2) / 35;
 
         gsap.to(containerRef.current, {
-          rotationX: y,
-          rotationY: x,
-          duration: 0.3,
-          transformPerspective: 1000,
+          rotationX: y * 0.7,
+          rotationY: x * 0.7,
+          duration: 0.5,
+          transformPerspective: 1500,
           overwrite: 'auto',
+          ease: 'power2.out',
+        });
+
+        gsap.to(containerRef.current, {
+          boxShadow: '0 40px 100px rgba(37, 99, 235, 0.4)',
+          duration: 0.5,
+          ease: 'power2.out',
         });
       };
 
@@ -55,8 +64,9 @@ export default function PhotoFrame({
         gsap.to(containerRef.current, {
           rotationX: 0,
           rotationY: 0,
-          duration: 0.4,
-          ease: 'power2.out',
+          boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 1px rgba(255, 255, 255, 0.1)',
+          duration: 0.7,
+          ease: 'cubic-bezier(0.34, 1.56, 0.64, 1)',
         });
       };
 
