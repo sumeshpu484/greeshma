@@ -1,5 +1,5 @@
 import { buildConfig } from 'payload';
-import { sqliteAdapter } from '@payloadcms/db-sqlite';
+import { postgresAdapter } from '@payloadcms/db-postgres';
 import { Users } from './collections/Users';
 import { Profile } from './collections/Profile';
 import { Projects } from './collections/Projects';
@@ -23,9 +23,9 @@ export default buildConfig({
   ],
   secret: process.env.PAYLOAD_SECRET || 'test-secret-key-change-in-production',
   serverURL: process.env.NEXT_PUBLIC_PAYLOAD_URL || 'http://localhost:3000',
-  db: sqliteAdapter({
-    client: {
-      url: ':memory:',
+  db: postgresAdapter({
+    pool: {
+      connectionString: process.env.DATABASE_URL || 'postgresql://user:password@localhost:5432/portfolio_db',
     },
   }),
 });
