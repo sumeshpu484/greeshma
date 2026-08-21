@@ -7,6 +7,7 @@ import ServicesModern from '@/components/ServicesModern';
 import TestimonialsModern from '@/components/TestimonialsModern';
 import AboutSection from '@/components/AboutSection';
 import PhotoGallery from '@/components/PhotoGallery';
+import WorkExperienceModern from '@/components/WorkExperienceModern';
 import { fetchPageData } from '@/lib/payload';
 
 export default async function Home() {
@@ -22,6 +23,9 @@ export default async function Home() {
 
         {/* Services Section */}
         <ServicesModern />
+
+        {/* Work Experience Section */}
+        <WorkExperienceModern />
 
         {/* Skills Section */}
         <SkillsModern />
