@@ -14,7 +14,7 @@ export default function Footer({ profile, socialLinks }: FooterProps) {
     email: '✉️',
     instagram: '📷',
   };
-
+     
   const currentYear = new Date().getFullYear();
 
   return (
