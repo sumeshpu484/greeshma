@@ -16,23 +16,33 @@ export const initializePayload = async () => {
   }
 
   try {
+    console.log('📡 Initializing Payload CMS...');
+    console.log('🔗 Database URL configured:', !!process.env.DATABASE_URL);
+    console.log('🔐 Payload Secret configured:', !!process.env.PAYLOAD_SECRET);
+    console.log('🌐 Payload URL:', process.env.NEXT_PUBLIC_PAYLOAD_URL);
+
     payloadInstance = await getPayload({ config });
+
     console.log('✅ Payload CMS initialized successfully');
+    console.log('📊 Database connection established');
     return payloadInstance;
   } catch (error: any) {
     initError = error;
 
-    // In production during build, gracefully fail
     if (process.env.NODE_ENV === 'production') {
-      console.warn('⚠️ Payload CMS initialization failed:', error?.message);
-      console.warn('App will use fallback data. Database will initialize on first request.');
+      console.warn('⚠️ Payload CMS initialization failed during build');
+      console.warn('Error details:', error?.message || error?.code || 'Unknown error');
+      if (error?.cause) {
+        console.warn('Cause:', error.cause.message);
+      }
+      console.warn('ℹ️ App will use fallback data. Database will initialize when server runs.');
 
-      // Don't throw - let the app continue with fallbacks
       return null;
     }
 
-    // In development, throw the error for debugging
-    console.error('❌ Error initializing Payload CMS:', error);
+    // In development, provide detailed error info
+    console.error('❌ Error initializing Payload CMS:', error?.message);
+    console.error('Full error:', error);
     throw error;
   }
 };

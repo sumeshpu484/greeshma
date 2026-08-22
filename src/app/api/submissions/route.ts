@@ -20,7 +20,10 @@ export async function GET(req: Request) {
 
     return Response.json(submissions);
   } catch (error: any) {
-    console.warn('Submissions fetch error (returning fallback):', error?.message);
+    // Only log in development to avoid build-time warnings
+    if (process.env.NODE_ENV === 'development') {
+      console.warn('Submissions fetch error (returning fallback):', error?.message);
+    }
 
     // Always return a valid response, never fail
     return Response.json(
