@@ -29,7 +29,9 @@ export async function fetchProfile(): Promise<Profile> {
       phone: doc.phone,
     };
   } catch (error) {
-    console.warn('Error fetching profile, using mock data:', error);
+    if (process.env.NODE_ENV !== 'production') {
+      console.warn('Error fetching profile, using mock data:', error);
+    }
     return mockPageData.profile;
   }
 }
