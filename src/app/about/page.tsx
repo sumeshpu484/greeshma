@@ -1,14 +1,14 @@
 import { Metadata } from 'next';
-import { fetchProfile } from '@/lib/payload';
+import { mockPageData } from '@/lib/mock-data';
 
 export const metadata: Metadata = {
   title: 'About | Portfolio',
   description: 'Learn more about me',
 };
 
-export default async function AboutPage() {
+export default function AboutPage() {
   try {
-    const profile = await fetchProfile();
+    const profile = mockPageData.profile;
 
     return (
       <div className="min-h-screen bg-white">

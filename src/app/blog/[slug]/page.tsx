@@ -1,24 +1,24 @@
 import { Metadata } from 'next';
-import { fetchBlogPostBySlug } from '@/lib/payload';
+import { mockPageData } from '@/lib/mock-data';
 import Link from 'next/link';
 
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
-  try {
-    const post = await fetchBlogPostBySlug(params.slug);
-    return {
-      title: `${post.title} | Blog`,
-      description: post.excerpt,
-    };
-  } catch {
-    return {
-      title: 'Blog Post | Portfolio',
-    };
+export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
+  const post = mockPageData.blogPosts.find(p => p.slug === params.slug);
+  if (!post) {
+    return { title: 'Blog Post | Portfolio' };
   }
+  return {
+    title: `${post.title} | Blog`,
+    description: post.excerpt,
+  };
 }
 
-export default async function BlogPostPage({ params }: { params: { slug: string } }) {
+export default function BlogPostPage({ params }: { params: { slug: string } }) {
   try {
-    const post = await fetchBlogPostBySlug(params.slug);
+    const post = mockPageData.blogPosts.find(p => p.slug === params.slug);
+    if (!post) {
+      throw new Error('Post not found');
+    }
 
     return (
       <div className="min-h-screen bg-white">

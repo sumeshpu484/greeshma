@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import { fetchBlogPosts } from '@/lib/payload';
+import { mockPageData } from '@/lib/mock-data';
 import BlogCard from '@/components/BlogCard';
 
 export const metadata: Metadata = {
@@ -7,9 +7,9 @@ export const metadata: Metadata = {
   description: 'Read my latest articles and insights',
 };
 
-export default async function BlogPage() {
+export default function BlogPage() {
   try {
-    const posts = await fetchBlogPosts();
+    const posts = mockPageData.blogPosts;
 
     return (
       <div className="min-h-screen bg-gray-50">

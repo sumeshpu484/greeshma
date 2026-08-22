@@ -8,7 +8,7 @@ import TestimonialsModern from '@/components/TestimonialsModern';
 import AboutSection from '@/components/AboutSection';
 import PhotoGallery from '@/components/PhotoGallery';
 import WorkExperienceModern from '@/components/WorkExperienceModern';
-import { fetchPageData } from '@/lib/payload';
+import { mockPageData } from '@/lib/mock-data';
 
 // Override profile data with Greeshma's actual information
 const greeshmaProfile = {
@@ -21,10 +21,10 @@ const greeshmaProfile = {
   },
 };
 
-export default async function Home() {
+export default function Home() {
   try {
-    const { profile: originalProfile, socialLinks, ctaButtons, projects, blogPosts } = await fetchPageData();
-    const profile = { ...originalProfile, ...greeshmaProfile };
+    const profile = { ...mockPageData.profile, ...greeshmaProfile };
+    const { socialLinks, ctaButtons, projects, blogPosts } = mockPageData;
 
     return (
       <>
@@ -184,11 +184,12 @@ export default async function Home() {
       </>
     );
   } catch (error) {
+    console.error('Error rendering home page:', error);
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
           <h1 className="text-2xl font-bold text-white mb-2">Portfolio</h1>
-          <p className="text-white/60">Loading portfolio...</p>
+          <p className="text-white/60">There was an error loading the portfolio. Please refresh the page.</p>
         </div>
       </div>
     );

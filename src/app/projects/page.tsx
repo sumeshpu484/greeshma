@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import { fetchProjects } from '@/lib/payload';
+import { mockPageData } from '@/lib/mock-data';
 import ProjectCard from '@/components/ProjectCard';
 
 export const metadata: Metadata = {
@@ -7,9 +7,9 @@ export const metadata: Metadata = {
   description: 'View my work and projects',
 };
 
-export default async function ProjectsPage() {
+export default function ProjectsPage() {
   try {
-    const projects = await fetchProjects();
+    const projects = mockPageData.projects;
 
     return (
       <div className="min-h-screen bg-gray-50">
