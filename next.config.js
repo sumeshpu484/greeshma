@@ -3,8 +3,8 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-  swcMinify: true,
   compress: true,
+  turbopack: {},
   webpack: (config) => {
     config.resolve.alias = {
       ...config.resolve.alias,
