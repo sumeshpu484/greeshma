@@ -1,6 +1,5 @@
 import { buildConfig } from 'payload';
 import { postgresAdapter } from '@payloadcms/db-postgres';
-import path from 'path';
 import { Users } from './collections/Users';
 import { Profile } from './collections/Profile';
 import { Projects } from './collections/Projects';
@@ -12,9 +11,6 @@ import { CTAButtons } from './collections/CTAButtons';
 export default buildConfig({
   admin: {
     user: 'users',
-    importMap: {
-      baseClass: path.resolve(__dirname, './baseClass.ts'),
-    },
   },
   collections: [
     Users,

@@ -35,7 +35,7 @@ export default function PortfolioMinimal({
   items = [],
 }: PortfolioMinimalProps) {
   // Default portfolio items with verified working professional images
-  const defaultItems = [
+  const defaultItems: PortfolioItem[] = [
     {
       id: '1',
       title: 'Digital Transformation',

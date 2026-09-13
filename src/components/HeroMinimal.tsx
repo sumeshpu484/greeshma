@@ -102,7 +102,7 @@ export default function HeroMinimal({ profile, ctaButtons }: HeroMinimalProps) {
               {primaryButtons.slice(0, 2).map((btn) => (
                 <Link
                   key={btn.id}
-                  href={btn.url}
+                  href={btn.href}
                   className="px-6 py-3 border-2 border-gray-900 text-gray-900 rounded-lg font-semibold hover:bg-gray-900 hover:text-white transition-all duration-300"
                 >
                   {btn.label}
@@ -111,7 +111,7 @@ export default function HeroMinimal({ profile, ctaButtons }: HeroMinimalProps) {
               {secondaryButtons.slice(0, 1).map((btn) => (
                 <Link
                   key={btn.id}
-                  href={btn.url}
+                  href={btn.href}
                   className="px-6 py-3 border-2 border-gray-300 text-gray-600 rounded-lg font-semibold hover:border-gray-900 hover:text-gray-900 transition-all duration-300"
                 >
                   {btn.label}

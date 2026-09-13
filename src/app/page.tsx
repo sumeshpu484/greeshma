@@ -144,7 +144,12 @@ export default async function Home() {
         <PortfolioMinimal
           title="Design Portfolio"
           subtitle="A glimpse into my creative process and strategic initiatives"
-          items={projects.slice(0, 6)}
+          items={projects.slice(0, 6).map((p) => ({
+            id: p.id,
+            title: p.title,
+            category: p.tags?.[0] || 'Project',
+            image: p.image,
+          }))}
         />
 
         {/* Testimonials Section */}

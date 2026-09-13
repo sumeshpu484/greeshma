@@ -1,3 +1,5 @@
+import type { Variants } from 'framer-motion';
+
 export const nameAnimation = {
   initial: { opacity: 0, y: 30 },
   animate: { opacity: 1, y: 0 },
@@ -162,22 +164,21 @@ export const parallaxImage = {
   viewport: { once: false, amount: 0.5 },
 };
 
-export const heroHeading = {
+const smoothEase = [0.23, 1, 0.320, 1] as const;
+
+export const heroHeading: Variants = {
   initial: { opacity: 0, y: 60 },
-  animate: { opacity: 1, y: 0 },
-  transition: { duration: 1, ease: [0.23, 1, 0.320, 1] },
+  animate: { opacity: 1, y: 0, transition: { duration: 1, ease: smoothEase } },
 };
 
-export const heroSubheading = {
+export const heroSubheading: Variants = {
   initial: { opacity: 0, y: 40 },
-  animate: { opacity: 1, y: 0 },
-  transition: { duration: 1, delay: 0.2, ease: [0.23, 1, 0.320, 1] },
+  animate: { opacity: 1, y: 0, transition: { duration: 1, delay: 0.2, ease: smoothEase } },
 };
 
-export const heroCTA = {
+export const heroCTA: Variants = {
   initial: { opacity: 0, y: 30, scale: 0.95 },
-  animate: { opacity: 1, y: 0, scale: 1 },
-  transition: { duration: 1, delay: 0.4, ease: [0.23, 1, 0.320, 1] },
+  animate: { opacity: 1, y: 0, scale: 1, transition: { duration: 1, delay: 0.4, ease: smoothEase } },
   whileHover: { scale: 1.02, y: -2 },
   whileTap: { scale: 0.98 },
 };
@@ -185,18 +186,18 @@ export const heroCTA = {
 export const staggeredFadeUp = {
   container: {
     initial: { opacity: 0 },
-    whileInView: { opacity: 1 },
-    transition: {
-      staggerChildren: 0.12,
-      delayChildren: 0.1,
+    whileInView: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.12,
+        delayChildren: 0.1,
+      },
     },
-    viewport: { once: true, amount: 0.2 },
-  },
+  } as Variants,
   item: {
     initial: { opacity: 0, y: 40 },
-    whileInView: { opacity: 1, y: 0 },
-    transition: { duration: 0.7, ease: [0.23, 1, 0.320, 1] },
-  },
+    whileInView: { opacity: 1, y: 0, transition: { duration: 0.7, ease: smoothEase } },
+  } as Variants,
 };
 
 export const smoothSlideIn = {

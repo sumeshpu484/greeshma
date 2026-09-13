@@ -80,7 +80,7 @@ export default function HeroSectionCorporate({ profile, ctaButtons }: HeroSectio
               {primaryButtons.map((btn, i) => (
                 <Link
                   key={btn.id}
-                  href={btn.url}
+                  href={btn.href}
                   className="px-8 py-4 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition-all shadow-lg hover:shadow-xl hover:scale-105 active:scale-95 text-center"
                 >
                   {btn.label}
@@ -89,7 +89,7 @@ export default function HeroSectionCorporate({ profile, ctaButtons }: HeroSectio
               {secondaryButtons.slice(0, 1).map((btn) => (
                 <Link
                   key={btn.id}
-                  href={btn.url}
+                  href={btn.href}
                   className="px-8 py-4 bg-gray-100 text-gray-900 rounded-lg font-semibold hover:bg-gray-200 transition-all border border-gray-300 text-center"
                 >
                   {btn.label}
