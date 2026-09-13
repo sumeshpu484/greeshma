@@ -138,7 +138,10 @@ export async function fetchSocialLinks(): Promise<SocialLink[]> {
     if (!res.ok) throw new Error('Failed to fetch social links');
 
     const data = await res.json();
-    return (data.docs || []).sort((a: SocialLink, b: SocialLink) => a.displayOrder - b.displayOrder);
+    if (!data.docs || data.docs.length === 0) {
+      return mockPageData.socialLinks;
+    }
+    return data.docs.sort((a: SocialLink, b: SocialLink) => a.displayOrder - b.displayOrder);
   } catch (error) {
     console.warn('Error fetching social links:', error);
     return mockPageData.socialLinks;
@@ -155,7 +158,10 @@ export async function fetchCTAButtons(): Promise<CTAButton[]> {
     if (!res.ok) throw new Error('Failed to fetch CTA buttons');
 
     const data = await res.json();
-    return (data.docs || []).sort((a: CTAButton, b: CTAButton) => a.displayOrder - b.displayOrder);
+    if (!data.docs || data.docs.length === 0) {
+      return mockPageData.ctaButtons;
+    }
+    return data.docs.sort((a: CTAButton, b: CTAButton) => a.displayOrder - b.displayOrder);
   } catch (error) {
     console.warn('Error fetching CTA buttons:', error);
     return mockPageData.ctaButtons;

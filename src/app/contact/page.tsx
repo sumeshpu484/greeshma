@@ -13,7 +13,7 @@ export default async function ContactPage() {
   const { profile, socialLinks } = await fetchPageData();
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white dark:bg-gray-950 transition-colors duration-300">
       <HeaderMinimal socialLinks={socialLinks} name={profile.name} />
       <ContactFormPage profile={profile} socialLinks={socialLinks} />
       <FooterMinimal profile={profile} socialLinks={socialLinks} />

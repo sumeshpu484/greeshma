@@ -16,7 +16,7 @@ export default async function ProjectsPage() {
     const { profile, socialLinks } = await fetchPageData();
 
     return (
-      <div className="min-h-screen bg-white">
+      <div className="min-h-screen bg-white dark:bg-gray-950 transition-colors duration-300">
         <HeaderMinimal socialLinks={socialLinks} name={profile.name} />
         <ProjectsPageClient projects={projects} profile={profile} socialLinks={socialLinks} />
         <FooterMinimal profile={profile} socialLinks={socialLinks} />
@@ -24,10 +24,10 @@ export default async function ProjectsPage() {
     );
   } catch (error) {
     return (
-      <div className="min-h-screen bg-white flex items-center justify-center">
+      <div className="min-h-screen bg-white dark:bg-gray-950 transition-colors duration-300 flex items-center justify-center">
         <div className="text-center">
-          <h1 className="text-2xl font-bold text-gray-900 mb-2">Projects</h1>
-          <p className="text-gray-600">Loading projects...</p>
+          <h1 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">Projects</h1>
+          <p className="text-gray-600 dark:text-gray-400">Loading projects...</p>
         </div>
       </div>
     );

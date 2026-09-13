@@ -18,7 +18,7 @@ export default function AboutMinimal({
   highlights,
 }: AboutMinimalProps) {
   return (
-    <section className="py-20 md:py-28 bg-gray-50">
+    <section className="py-20 md:py-28 bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20 items-center">
           {/* Image */}
@@ -32,15 +32,15 @@ export default function AboutMinimal({
             <div className="relative w-64 h-64 md:w-80 md:h-80">
               <motion.div
                 initial={{ rotate: 0 }}
-                whileInView={{ rotate: 3 }}
+                whileInView={{ rotate: 6 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
                 viewport={{ once: true }}
-                className="absolute inset-0 bg-orange-100 rounded-2xl"
+                className="absolute inset-0 bg-gradient-to-br from-orange-300 to-orange-400 dark:from-orange-600 dark:to-orange-800 rounded-2xl"
               ></motion.div>
               <motion.div
                 whileHover={{ scale: 1.02 }}
                 transition={{ duration: 0.3 }}
-                className="absolute inset-0 bg-white rounded-2xl overflow-hidden shadow-lg"
+                className="absolute inset-0 bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg"
               >
                 <Image
                   src={photoUrl}
@@ -61,15 +61,15 @@ export default function AboutMinimal({
             className="space-y-6"
           >
             <div>
-              <p className="text-sm font-semibold text-orange-600 uppercase tracking-wider mb-2">
+              <p className="text-sm font-semibold text-orange-600 dark:text-orange-400 uppercase tracking-wider mb-2">
                 About Me
               </p>
-              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
                 {title}
               </h2>
             </div>
 
-            <p className="text-lg text-gray-600 leading-relaxed">
+            <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
               {description}
             </p>
 
@@ -84,8 +84,8 @@ export default function AboutMinimal({
                   viewport={{ once: true }}
                   className="flex gap-3"
                 >
-                  <span className="text-orange-600 font-bold mt-1">✓</span>
-                  <span className="text-gray-700">{highlight}</span>
+                  <span className="text-orange-600 dark:text-orange-400 font-bold mt-1">✓</span>
+                  <span className="text-gray-700 dark:text-gray-300">{highlight}</span>
                 </motion.div>
               ))}
             </div>

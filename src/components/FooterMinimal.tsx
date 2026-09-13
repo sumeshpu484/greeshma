@@ -4,6 +4,7 @@ import { Profile, SocialLink } from '@/types';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { fadeInUp } from './animationsMinimal';
+import { PlatformIcon } from './SocialIcons';
 
 interface FooterMinimalProps {
   profile: Profile;
@@ -12,14 +13,6 @@ interface FooterMinimalProps {
 
 export default function FooterMinimal({ profile, socialLinks }: FooterMinimalProps) {
   const currentYear = new Date().getFullYear();
-
-  const platformIcons: Record<string, string> = {
-    linkedin: '👔',
-    github: '🐙',
-    twitter: '𝕏',
-    email: '✉️',
-    instagram: '📷',
-  };
 
   const navLinks = [
     { label: 'Home', href: '/' },
@@ -30,7 +23,7 @@ export default function FooterMinimal({ profile, socialLinks }: FooterMinimalPro
   ];
 
   return (
-    <footer className="bg-gray-50 border-t border-gray-200">
+    <footer className="bg-gray-50 dark:bg-gray-950 border-t border-gray-200 dark:border-gray-800 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
         <motion.div
           variants={fadeInUp}
@@ -40,17 +33,17 @@ export default function FooterMinimal({ profile, socialLinks }: FooterMinimalPro
           className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
           {/* Brand */}
           <div>
-            <h3 className="font-bold text-lg text-gray-900 mb-2">{profile.name}</h3>
-            <p className="text-gray-600 text-sm">{profile.title}</p>
+            <h3 className="font-bold text-lg text-gray-900 dark:text-white mb-2">{profile.name}</h3>
+            <p className="text-gray-600 dark:text-gray-400 text-sm">{profile.title}</p>
           </div>
 
           {/* Navigation */}
           <div>
-            <h4 className="font-semibold text-gray-900 mb-4 text-sm">Navigation</h4>
+            <h4 className="font-semibold text-gray-900 dark:text-white mb-4 text-sm">Navigation</h4>
             <ul className="space-y-2">
               {navLinks.map(link => (
                 <li key={link.href}>
-                  <Link href={link.href} className="text-gray-600 hover:text-orange-600 transition-colors text-sm">
+                  <Link href={link.href} className="text-gray-600 dark:text-gray-400 hover:text-orange-600 dark:hover:text-orange-400 transition-colors text-sm">
                     {link.label}
                   </Link>
                 </li>
@@ -60,7 +53,7 @@ export default function FooterMinimal({ profile, socialLinks }: FooterMinimalPro
 
           {/* Connect */}
           <div>
-            <h4 className="font-semibold text-gray-900 mb-4 text-sm">Connect</h4>
+            <h4 className="font-semibold text-gray-900 dark:text-white mb-4 text-sm">Connect</h4>
             <div className="flex gap-4">
               {socialLinks.map(link => (
                 <motion.a
@@ -70,10 +63,10 @@ export default function FooterMinimal({ profile, socialLinks }: FooterMinimalPro
                   rel="noopener noreferrer"
                   whileHover={{ y: -3, scale: 1.1 }}
                   transition={{ duration: 0.2 }}
-                  className="text-gray-600 hover:text-orange-600 transition-colors text-lg"
+                  className="text-gray-600 dark:text-gray-400 hover:text-orange-600 dark:hover:text-orange-400 transition-colors"
                   title={link.platform}
                 >
-                  {platformIcons[link.platform] || '🔗'}
+                  <PlatformIcon platform={link.platform} className="w-5 h-5" />
                 </motion.a>
               ))}
             </div>
@@ -81,12 +74,12 @@ export default function FooterMinimal({ profile, socialLinks }: FooterMinimalPro
 
           {/* Contact */}
           <div>
-            <h4 className="font-semibold text-gray-900 mb-4 text-sm">Contact</h4>
+            <h4 className="font-semibold text-gray-900 dark:text-white mb-4 text-sm">Contact</h4>
             <div className="space-y-2">
               {profile.email && (
                 <a
                   href={`mailto:${profile.email}`}
-                  className="text-gray-600 hover:text-orange-600 transition-colors text-sm block"
+                  className="text-gray-600 dark:text-gray-400 hover:text-orange-600 dark:hover:text-orange-400 transition-colors text-sm block"
                 >
                   {profile.email}
                 </a>
@@ -94,7 +87,7 @@ export default function FooterMinimal({ profile, socialLinks }: FooterMinimalPro
               {profile.phone && (
                 <a
                   href={`tel:${profile.phone}`}
-                  className="text-gray-600 hover:text-orange-600 transition-colors text-sm block"
+                  className="text-gray-600 dark:text-gray-400 hover:text-orange-600 dark:hover:text-orange-400 transition-colors text-sm block"
                 >
                   {profile.phone}
                 </a>
@@ -104,8 +97,8 @@ export default function FooterMinimal({ profile, socialLinks }: FooterMinimalPro
         </motion.div>
 
         {/* Divider */}
-        <div className="border-t border-gray-200 pt-8">
-          <p className="text-center text-gray-600 text-sm">
+        <div className="border-t border-gray-200 dark:border-gray-800 pt-8">
+          <p className="text-center text-gray-600 dark:text-gray-400 text-sm">
             &copy; {currentYear} {profile.name}. All rights reserved.
           </p>
         </div>

@@ -79,7 +79,7 @@ export default function PortfolioMinimal({
   return (
     <>
       <style>{PatternStyle}</style>
-      <section className="py-20 md:py-28 bg-gray-50">
+      <section className="py-20 md:py-28 bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
@@ -89,13 +89,13 @@ export default function PortfolioMinimal({
           viewport={{ once: true }}
           className="mb-16 max-w-2xl"
         >
-          <p className="text-sm font-semibold text-orange-600 uppercase tracking-wider mb-2">
+          <p className="text-sm font-semibold text-orange-600 dark:text-orange-400 uppercase tracking-wider mb-2">
             Portfolio
           </p>
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
             {title}
           </h2>
-          <p className="text-lg text-gray-600">{subtitle}</p>
+          <p className="text-lg text-gray-600 dark:text-gray-400">{subtitle}</p>
         </motion.div>
 
         {/* Portfolio Grid */}
@@ -111,10 +111,10 @@ export default function PortfolioMinimal({
               <Link href={`/projects/${item.id}`}>
                 <motion.div
                   whileHover={{ y: -8 }}
-                  className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all cursor-pointer h-full flex flex-col"
+                  className="bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-md hover:shadow-xl dark:shadow-none dark:hover:shadow-xl dark:hover:shadow-black/30 transition-all cursor-pointer h-full flex flex-col"
                 >
                   {/* Image or Gradient Background */}
-                  <div className="relative w-full h-40 overflow-hidden group border-b border-gray-100">
+                  <div className="relative w-full h-40 overflow-hidden group border-b border-gray-100 dark:border-gray-700">
                     {item.image ? (
                       <Image
                         src={item.image}
@@ -140,10 +140,10 @@ export default function PortfolioMinimal({
 
                   {/* Content */}
                   <div className="p-6 flex flex-col flex-grow">
-                    <p className="text-xs text-gray-500 font-semibold mb-2 uppercase tracking-wider">
+                    <p className="text-xs text-gray-500 dark:text-gray-400 font-semibold mb-2 uppercase tracking-wider">
                       {item.category}
                     </p>
-                    <h3 className="text-base font-semibold text-gray-900">
+                    <h3 className="text-base font-semibold text-gray-900 dark:text-white">
                       {item.title}
                     </h3>
                   </div>
@@ -163,7 +163,7 @@ export default function PortfolioMinimal({
         >
           <Link
             href="/projects"
-            className="inline-block px-8 py-3 border-2 border-gray-900 text-gray-900 rounded-lg font-semibold hover:bg-gray-900 hover:text-white transition-all duration-300"
+            className="inline-block px-8 py-3 border-2 border-gray-900 dark:border-white text-gray-900 dark:text-white rounded-lg font-semibold hover:bg-gray-900 dark:hover:bg-white hover:text-white dark:hover:text-gray-900 transition-all duration-300"
           >
             View All Projects
           </Link>

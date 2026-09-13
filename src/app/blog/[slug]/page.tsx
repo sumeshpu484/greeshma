@@ -21,7 +21,7 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
     const post = await fetchBlogPostBySlug(params.slug);
 
     return (
-      <div className="min-h-screen bg-white">
+      <div className="min-h-screen bg-white dark:bg-gray-950 transition-colors duration-300">
         <div className="container-max py-20">
           <Link href="/blog" className="text-primary-600 font-semibold hover:underline mb-8 inline-block">
             ← Back to Blog
@@ -34,8 +34,8 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
                 className="w-full h-96 object-cover rounded-lg mb-8"
               />
             )}
-            <h1 className="text-5xl font-bold text-gray-900 mb-4">{post.title}</h1>
-            <div className="flex gap-4 mb-8 text-gray-600 flex-wrap">
+            <h1 className="text-5xl font-bold text-gray-900 dark:text-white mb-4">{post.title}</h1>
+            <div className="flex gap-4 mb-8 text-gray-600 dark:text-gray-400 flex-wrap">
               <time>{new Date(post.publishedAt).toLocaleDateString()}</time>
               <div className="flex gap-2">
                 {post.tags.map(tag => (
@@ -52,9 +52,9 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
     );
   } catch (error) {
     return (
-      <div className="min-h-screen bg-white flex items-center justify-center">
+      <div className="min-h-screen bg-white dark:bg-gray-950 transition-colors duration-300 flex items-center justify-center">
         <div className="text-center">
-          <h1 className="text-2xl font-bold text-gray-900 mb-2">Article Not Found</h1>
+          <h1 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">Article Not Found</h1>
           <Link href="/blog" className="text-primary-600 font-semibold hover:underline">
             Back to Blog
           </Link>

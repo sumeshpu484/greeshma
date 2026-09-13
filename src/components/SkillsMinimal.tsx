@@ -7,23 +7,23 @@ const skillCategories = [
   {
     title: 'Operations & Strategy',
     skills: ['Operations Strategy', 'Business Analysis', 'Digital Transformation', 'Project Management'],
-    accentColor: 'bg-orange-100 text-orange-700',
+    dot: 'bg-orange-400',
   },
   {
     title: 'Technology & Innovation',
     skills: ['VR/XR Technology', 'Agile Methodology', 'Technology Strategy', 'Systems Architecture'],
-    accentColor: 'bg-blue-100 text-blue-700',
+    dot: 'bg-blue-400',
   },
   {
     title: 'Leadership & Management',
     skills: ['Team Leadership', 'Stakeholder Management', 'Organizational Development', 'Change Management'],
-    accentColor: 'bg-pink-100 text-pink-700',
+    dot: 'bg-pink-400',
   },
 ];
 
 export default function SkillsMinimal() {
   return (
-    <section className="py-20 md:py-28 bg-white">
+    <section className="py-20 md:py-28 bg-white dark:bg-gray-950 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
@@ -33,10 +33,10 @@ export default function SkillsMinimal() {
           viewport={{ once: true }}
           className="mb-16 max-w-2xl"
         >
-          <p className="text-sm font-semibold text-orange-600 uppercase tracking-wider mb-2">
+          <p className="text-sm font-semibold text-orange-600 dark:text-orange-400 uppercase tracking-wider mb-2">
             Skills
           </p>
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900">
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white">
             Expertise & Capabilities
           </h2>
         </motion.div>
@@ -55,9 +55,9 @@ export default function SkillsMinimal() {
               variants={staggerItem}
               whileHover={{ y: -6 }}
               transition={{ duration: 0.3, ease: 'easeOut' }}
-              className="bg-gray-50 rounded-lg p-8 h-full hover:shadow-lg hover:bg-white transition-all duration-300"
+              className="bg-gray-50 dark:bg-gray-900 rounded-lg p-8 h-full hover:shadow-lg dark:hover:shadow-black/30 hover:bg-white dark:hover:bg-gray-800 transition-all duration-300"
             >
-              <h3 className="text-xl font-bold text-gray-900 mb-6">
+              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-6">
                 {category.title}
               </h3>
               <div className="space-y-3">
@@ -70,8 +70,8 @@ export default function SkillsMinimal() {
                     viewport={{ once: true }}
                     className="flex items-start gap-3"
                   >
-                    <span className={`inline-block w-2 h-2 rounded-full ${category.accentColor.split(' ')[0]} mt-2`}></span>
-                    <span className="text-gray-700">{skill}</span>
+                    <span className={`inline-block w-2 h-2 rounded-full ${category.dot} mt-2`}></span>
+                    <span className="text-gray-700 dark:text-gray-300">{skill}</span>
                   </motion.div>
                 ))}
               </div>

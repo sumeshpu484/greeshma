@@ -18,7 +18,7 @@ export default function CTAMinimal({
   secondaryCTA = { label: 'Learn More', href: '/about' },
 }: CTAMinimalProps) {
   return (
-    <section className="py-20 md:py-28 bg-white">
+    <section className="py-20 md:py-28 bg-white dark:bg-gray-950 transition-colors duration-300">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <motion.div
           variants={fadeInUp}
@@ -28,12 +28,12 @@ export default function CTAMinimal({
           className="space-y-8"
         >
           {/* Heading */}
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900">
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white">
             {heading}
           </h2>
 
           {/* Description */}
-          <p className="text-xl text-gray-600 leading-relaxed max-w-2xl mx-auto">
+          <p className="text-xl text-gray-600 dark:text-gray-400 leading-relaxed max-w-2xl mx-auto">
             {description}
           </p>
 
@@ -42,7 +42,7 @@ export default function CTAMinimal({
             <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.98 }}>
               <Link
                 href={primaryCTA.href}
-                className="block px-8 py-4 bg-gray-900 text-white rounded-lg font-semibold hover:bg-gray-800 transition-colors duration-300 text-center"
+                className="block px-8 py-4 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-lg font-semibold hover:bg-gray-800 dark:hover:bg-gray-200 transition-colors duration-300 text-center"
               >
                 {primaryCTA.label}
               </Link>
@@ -50,7 +50,7 @@ export default function CTAMinimal({
             <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.98 }}>
               <Link
                 href={secondaryCTA.href}
-                className="block px-8 py-4 border-2 border-gray-900 text-gray-900 rounded-lg font-semibold hover:bg-gray-900 hover:text-white transition-all duration-300 text-center"
+                className="block px-8 py-4 border-2 border-gray-900 dark:border-white text-gray-900 dark:text-white rounded-lg font-semibold hover:bg-gray-900 dark:hover:bg-white hover:text-white dark:hover:text-gray-900 transition-all duration-300 text-center"
               >
                 {secondaryCTA.label}
               </Link>

@@ -28,7 +28,7 @@ const services = [
 
 export default function ServicesMinimal() {
   return (
-    <section className="py-20 md:py-28 bg-gray-50">
+    <section className="py-20 md:py-28 bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
@@ -38,10 +38,10 @@ export default function ServicesMinimal() {
           viewport={{ once: true }}
           className="mb-16 max-w-2xl"
         >
-          <p className="text-sm font-semibold text-orange-600 uppercase tracking-wider mb-2">
+          <p className="text-sm font-semibold text-orange-600 dark:text-orange-400 uppercase tracking-wider mb-2">
             Services
           </p>
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-3">
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-3">
             What I Do
           </h2>
           <motion.span
@@ -49,7 +49,7 @@ export default function ServicesMinimal() {
             whileInView={{ width: '64px' }}
             transition={{ duration: 0.7, delay: 0.2, ease: 'easeOut' }}
             viewport={{ once: true }}
-            className="block h-1 bg-orange-500 rounded-full"
+            className="block h-1 bg-orange-500 dark:bg-orange-400 rounded-full"
           />
         </motion.div>
 
@@ -67,7 +67,7 @@ export default function ServicesMinimal() {
               variants={staggerItem}
               whileHover={{ y: -6 }}
               transition={{ duration: 0.3, ease: 'easeOut' }}
-              className="bg-white rounded-lg p-8 shadow-sm hover:shadow-lg transition-shadow duration-300"
+              className="bg-white dark:bg-gray-800 rounded-lg p-8 shadow-sm hover:shadow-lg dark:shadow-none dark:hover:shadow-xl dark:hover:shadow-black/30 transition-shadow duration-300"
             >
               <motion.div
                 initial={{ scale: 0, rotate: -90, opacity: 0 }}
@@ -84,7 +84,7 @@ export default function ServicesMinimal() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: idx * 0.1 + 0.25 }}
                 viewport={{ once: true }}
-                className="text-xl font-bold text-gray-900 mb-3"
+                className="text-xl font-bold text-gray-900 dark:text-white mb-3"
               >
                 {service.title}
               </motion.h3>
@@ -93,7 +93,7 @@ export default function ServicesMinimal() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: idx * 0.1 + 0.35 }}
                 viewport={{ once: true }}
-                className="text-gray-600 leading-relaxed"
+                className="text-gray-600 dark:text-gray-400 leading-relaxed"
               >
                 {service.description}
               </motion.p>

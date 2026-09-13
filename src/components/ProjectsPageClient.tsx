@@ -45,11 +45,11 @@ export default function ProjectsPageClient({
           transition={{ duration: 0.8 }}
           className="max-w-3xl"
         >
-          <p className="text-blue-600 font-medium mb-4">Portfolio</p>
-          <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
+          <p className="text-orange-600 dark:text-orange-400 font-medium mb-4">Portfolio</p>
+          <h1 className="text-5xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6">
             Featured Projects
           </h1>
-          <p className="text-xl text-gray-600 leading-relaxed">
+          <p className="text-xl text-gray-600 dark:text-gray-400 leading-relaxed">
             Explore a selection of strategic initiatives and transformative projects I've led across operations, technology, and organizational development.
           </p>
         </motion.div>
@@ -62,7 +62,7 @@ export default function ProjectsPageClient({
           animate={{ opacity: 1 }}
           className="text-center py-20"
         >
-          <p className="text-lg text-gray-600">Projects coming soon. Check back later!</p>
+          <p className="text-lg text-gray-600 dark:text-gray-400">Projects coming soon. Check back later!</p>
         </motion.div>
       ) : (
         <motion.div
