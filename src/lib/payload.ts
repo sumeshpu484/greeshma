@@ -5,6 +5,7 @@ export async function fetchProfile(): Promise<Profile> {
   try {
     const res = await fetch(`${process.env.NEXT_PUBLIC_PAYLOAD_URL}/api/profile?limit=1`, {
       next: { revalidate: 3600 },
+      signal: AbortSignal.timeout(8000),
     });
 
     if (!res.ok) throw new Error('Failed to fetch profile');
@@ -40,6 +41,7 @@ export async function fetchProjects(): Promise<Project[]> {
   try {
     const res = await fetch(`${process.env.NEXT_PUBLIC_PAYLOAD_URL}/api/projects?limit=100`, {
       next: { revalidate: 3600 },
+      signal: AbortSignal.timeout(8000),
     });
 
     if (!res.ok) throw new Error('Failed to fetch projects');
@@ -68,6 +70,7 @@ export async function fetchBlogPosts(): Promise<BlogPost[]> {
   try {
     const res = await fetch(`${process.env.NEXT_PUBLIC_PAYLOAD_URL}/api/blog-posts?limit=100`, {
       next: { revalidate: 3600 },
+      signal: AbortSignal.timeout(8000),
     });
 
     if (!res.ok) throw new Error('Failed to fetch blog posts');
@@ -97,7 +100,7 @@ export async function fetchBlogPostBySlug(slug: string): Promise<BlogPost> {
   try {
     const res = await fetch(
       `${process.env.NEXT_PUBLIC_PAYLOAD_URL}/api/blog-posts?where[slug][equals]=${slug}`,
-      { next: { revalidate: 3600 } }
+      { next: { revalidate: 3600 }, signal: AbortSignal.timeout(8000) }
     );
 
     if (!res.ok) throw new Error('Failed to fetch blog post');
@@ -129,6 +132,7 @@ export async function fetchSocialLinks(): Promise<SocialLink[]> {
   try {
     const res = await fetch(`${process.env.NEXT_PUBLIC_PAYLOAD_URL}/api/social-links?limit=100`, {
       next: { revalidate: 3600 },
+      signal: AbortSignal.timeout(8000),
     });
 
     if (!res.ok) throw new Error('Failed to fetch social links');
@@ -145,6 +149,7 @@ export async function fetchCTAButtons(): Promise<CTAButton[]> {
   try {
     const res = await fetch(`${process.env.NEXT_PUBLIC_PAYLOAD_URL}/api/cta-buttons?limit=100`, {
       next: { revalidate: 3600 },
+      signal: AbortSignal.timeout(8000),
     });
 
     if (!res.ok) throw new Error('Failed to fetch CTA buttons');
