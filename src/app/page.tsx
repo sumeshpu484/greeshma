@@ -1,13 +1,13 @@
-import Header from '@/components/Header';
-import HeroSectionModern from '@/components/HeroSectionModern';
-import Footer from '@/components/Footer';
-import ProjectsModern from '@/components/ProjectsModern';
-import SkillsModern from '@/components/SkillsModern';
-import ServicesModern from '@/components/ServicesModern';
-import TestimonialsModern from '@/components/TestimonialsModern';
-import AboutSection from '@/components/AboutSection';
-import PhotoGallery from '@/components/PhotoGallery';
-import WorkExperienceModern from '@/components/WorkExperienceModern';
+import HeaderMinimal from '@/components/HeaderMinimal';
+import HeroMinimal from '@/components/HeroMinimal';
+import FooterMinimal from '@/components/FooterMinimal';
+import SkillsMinimal from '@/components/SkillsMinimal';
+import ServicesMinimal from '@/components/ServicesMinimal';
+import TestimonialsMinimal from '@/components/TestimonialsMinimal';
+import AboutMinimal from '@/components/AboutMinimal';
+import PortfolioMinimal from '@/components/PortfolioMinimal';
+import WorkExperienceSidebar from '@/components/WorkExperienceSidebar';
+import CTAMinimal from '@/components/CTAMinimal';
 import { fetchPageData } from '@/lib/payload';
 
 // Override profile data with Greeshma's actual information
@@ -16,7 +16,7 @@ const greeshmaProfile = {
   title: "Chief Operating Officer | Technical Business Analyst",
   tagline: "Driving Strategic Innovation in Industrial Training, Automation & VR Solutions",
   avatar: {
-    url: "https://api.dicebear.com/7.x/avataaars/svg?seed=greeshma-jenson",
+    url: "/portfolio-1.jpeg",
     alt: "Greeshma Jenson",
   },
 };
@@ -28,16 +28,16 @@ export default async function Home() {
 
     return (
       <>
-        <Header socialLinks={socialLinks} name={profile.name} />
+        <HeaderMinimal socialLinks={socialLinks} name={profile.name} />
 
-        {/* Ultra-Modern Hero Section */}
-        <HeroSectionModern profile={profile} ctaButtons={ctaButtons} />
+        {/* Minimal Creative Hero Section */}
+        <HeroMinimal profile={profile} ctaButtons={ctaButtons} />
 
         {/* Services Section */}
-        <ServicesModern />
+        <ServicesMinimal />
 
         {/* Work Experience Section */}
-        <WorkExperienceModern
+        <WorkExperienceSidebar
           experiences={[
             {
               id: '1',
@@ -123,11 +123,11 @@ export default async function Home() {
         />
 
         {/* Skills Section */}
-        <SkillsModern />
+        <SkillsMinimal />
 
         {/* About Section with Photo */}
-        <AboutSection
-          photoUrl="https://api.dicebear.com/7.x/avataaars/svg?seed=greeshma-jenson-operations"
+        <AboutMinimal
+          photoUrl="/portfolio-2.jpeg"
           title="About Me"
           description="As Chief Operating Officer at WARTENS UK, I drive strategic integration across our ecosystem of innovative ventures - from VR-based industrial training (iUNI) to specialized recruitment (OSCABE) and automation solutions. With a Master's degree in IT Project Management and 7+ years of experience, I combine technical expertise with strategic business acumen to build future-ready ecosystems where technology, workforce development, and industry demands converge."
           highlights={[
@@ -140,47 +140,25 @@ export default async function Home() {
           ]}
         />
 
-        {/* Photo Gallery Section */}
-        <PhotoGallery
-          title="Behind the Scenes"
-          subtitle="A glimpse into my creative process and project work"
+        {/* Portfolio Section */}
+        <PortfolioMinimal
+          title="Design Portfolio"
+          subtitle="A glimpse into my creative process and strategic initiatives"
+          items={projects.slice(0, 6)}
         />
 
-        {/* Featured Projects */}
-        {projects.length > 0 && <ProjectsModern projects={projects} />}
-
         {/* Testimonials Section */}
-        <TestimonialsModern />
+        <TestimonialsMinimal />
 
         {/* Contact CTA Section */}
-        <section className="relative py-20 md:py-28">
-          <div className="container-max">
-            {/* Decorative elements */}
-            <div className="absolute top-0 left-0 w-72 h-72 bg-gradient-to-br from-blue-500/20 to-transparent rounded-full blur-3xl -z-10"></div>
-            <div className="absolute bottom-0 right-0 w-72 h-72 bg-gradient-to-br from-purple-500/20 to-transparent rounded-full blur-3xl -z-10"></div>
+        <CTAMinimal
+          heading="Ready to Collaborate?"
+          description="Let's discuss how I can help you drive strategic innovation and achieve your goals."
+          primaryCTA={{ label: 'Get in Touch', href: '/contact' }}
+          secondaryCTA={{ label: 'Learn More About Me', href: '/about' }}
+        />
 
-            <div className="max-w-3xl mx-auto text-center space-y-8">
-              <div>
-                <p className="text-label mb-4">Let's Create</p>
-                <h2 className="text-display gradient-text-ultra mb-4">Ready to Build Something Great?</h2>
-                <p className="text-body max-w-2xl mx-auto">
-                  I'm always interested in hearing about new projects and opportunities to work with incredible people.
-                </p>
-              </div>
-
-              <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-                <a href="mailto:contact@example.com" className="btn-primary">
-                  Start a Conversation
-                </a>
-                <a href="/about" className="btn-secondary">
-                  Learn More About Me
-                </a>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <Footer profile={profile} socialLinks={socialLinks} />
+        <FooterMinimal profile={profile} socialLinks={socialLinks} />
       </>
     );
   } catch (error) {

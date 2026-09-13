@@ -1,40 +1,23 @@
 import { Metadata } from 'next';
-import { fetchProfile } from '@/lib/payload';
+import { fetchPageData } from '@/lib/payload';
+import HeaderMinimal from '@/components/HeaderMinimal';
+import FooterMinimal from '@/components/FooterMinimal';
+import AboutPageClient from '@/components/AboutPageClient';
 
 export const metadata: Metadata = {
   title: 'About | Portfolio',
-  description: 'Learn more about me',
+  description: 'Learn more about me and my journey',
 };
 
 export default async function AboutPage() {
   try {
-    const profile = await fetchProfile();
+    const { profile, socialLinks } = await fetchPageData();
 
     return (
       <div className="min-h-screen bg-white">
-        <div className="container-max py-20">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <div>
-              <img
-                src={profile.avatar.url}
-                alt={profile.name}
-                className="w-full rounded-lg shadow-lg"
-              />
-            </div>
-            <div>
-              <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-                About Me
-              </h1>
-              <p className="text-lg text-gray-700 mb-6 leading-relaxed">
-                {profile.bio}
-              </p>
-              <div className="space-y-4">
-                <p><strong className="text-gray-900">Email:</strong> <span className="text-gray-600">{profile.email}</span></p>
-                {profile.phone && <p><strong className="text-gray-900">Phone:</strong> <span className="text-gray-600">{profile.phone}</span></p>}
-              </div>
-            </div>
-          </div>
-        </div>
+        <HeaderMinimal socialLinks={socialLinks} name={profile.name} />
+        <AboutPageClient profile={profile} />
+        <FooterMinimal profile={profile} socialLinks={socialLinks} />
       </div>
     );
   } catch (error) {
