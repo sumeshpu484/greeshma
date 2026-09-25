@@ -36,6 +36,18 @@ export interface BlogPost {
   publishedAt: string;
 }
 
+export interface WorkExperience {
+  id: string;
+  company: string;
+  position: string;
+  period: string;
+  description: string;
+  responsibilities: string[];
+  technologies: string[];
+  type: string;
+  displayOrder: number;
+}
+
 export interface ContactSubmission {
   id: string;
   name: string;

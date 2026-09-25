@@ -1,0 +1,551 @@
+<title>Work Experience Design Options</title>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    background: #f5f5f5;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', sans-serif;
+    padding: 20px;
+    line-height: 1.6;
+  }
+
+  .container {
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  h1 {
+    text-align: center;
+    margin-bottom: 10px;
+    color: #1f2937;
+  }
+
+  .subtitle {
+    text-align: center;
+    color: #6b7280;
+    margin-bottom: 40px;
+  }
+
+  .design-section {
+    background: white;
+    border-radius: 12px;
+    padding: 40px;
+    margin-bottom: 40px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  }
+
+  .design-title {
+    font-size: 24px;
+    font-weight: 700;
+    color: #ff8c42;
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  /* OPTION 1: Premium Horizontal Cards */
+  .card-premium {
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 20px;
+    display: flex;
+    gap: 24px;
+    transition: all 0.3s ease;
+    border-left: 5px solid #ff8c42;
+  }
+
+  .card-premium:hover {
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    transform: translateY(-5px);
+  }
+
+  .card-icon {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #ff8c42 0%, #ff6b35 100%);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 28px;
+    flex-shrink: 0;
+  }
+
+  .card-content {
+    flex: 1;
+  }
+
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 12px;
+  }
+
+  .card-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: #1f2937;
+  }
+
+  .card-company {
+    font-size: 14px;
+    color: #ff8c42;
+    font-weight: 600;
+    margin-top: 4px;
+  }
+
+  .card-period {
+    background: #f3f4f6;
+    color: #6b7280;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  .card-description {
+    color: #4b5563;
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 12px;
+  }
+
+  .achievements {
+    display: flex;
+    gap: 20px;
+    font-size: 13px;
+    color: #6b7280;
+  }
+
+  .achievement {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .achievement-dot {
+    width: 4px;
+    height: 4px;
+    background: #ff8c42;
+    border-radius: 50%;
+  }
+
+  /* OPTION 2: Glassmorphism */
+  .glass-card {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 20px;
+    border-left: 4px solid #2196f3;
+  }
+
+  .glass-card:hover {
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+  }
+
+  /* OPTION 3: Alternating Layout */
+  .timeline {
+    position: relative;
+    padding: 20px 0;
+  }
+
+  .timeline-item {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 40px;
+    align-items: stretch;
+  }
+
+  .timeline-item:nth-child(even) {
+    flex-direction: row-reverse;
+  }
+
+  .timeline-dot {
+    width: 20px;
+    height: 20px;
+    background: #ff8c42;
+    border: 4px solid white;
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 24px;
+    box-shadow: 0 0 0 3px #ffe4cc;
+  }
+
+  .timeline-card {
+    flex: 1;
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 24px;
+    border-left: 5px solid #ff8c42;
+  }
+
+  .timeline-item:nth-child(2) .timeline-card {
+    border-left-color: #e91e63;
+  }
+
+  .timeline-item:nth-child(3) .timeline-card {
+    border-left-color: #2196f3;
+  }
+
+  .timeline-item:nth-child(2) .timeline-dot {
+    background: #e91e63;
+    box-shadow: 0 0 0 3px #fce4ec;
+  }
+
+  .timeline-item:nth-child(3) .timeline-dot {
+    background: #2196f3;
+    box-shadow: 0 0 0 3px #e3f2fd;
+  }
+
+  /* OPTION 4: Sidebar + Cards */
+  .sidebar-layout {
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    gap: 30px;
+  }
+
+  .sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .sidebar-item {
+    padding: 12px 16px;
+    background: #f3f4f6;
+    border-radius: 8px;
+    cursor: pointer;
+    border-left: 3px solid transparent;
+    transition: all 0.3s;
+    font-size: 14px;
+    font-weight: 500;
+    color: #6b7280;
+  }
+
+  .sidebar-item:hover {
+    background: #fff3e0;
+    border-left-color: #ff8c42;
+  }
+
+  .sidebar-item.active {
+    background: #fff3e0;
+    color: #ff8c42;
+    border-left-color: #ff8c42;
+  }
+
+  .large-card {
+    background: white;
+    border-radius: 12px;
+    padding: 32px;
+    border: 1px solid #e5e7eb;
+  }
+
+  /* OPTION 5: Modern Grid */
+  .grid-layout {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+
+  .grid-card {
+    background: white;
+    border-radius: 12px;
+    padding: 24px;
+    border: 1px solid #e5e7eb;
+    transition: all 0.3s;
+  }
+
+  .grid-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 24px rgba(0,0,0,0.15);
+  }
+
+  .grid-logo {
+    width: 48px;
+    height: 48px;
+    background: linear-gradient(135deg, #ff8c42 0%, #ff6b35 100%);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 24px;
+    margin-bottom: 16px;
+  }
+
+  .grid-stats {
+    display: flex;
+    gap: 16px;
+    margin-top: 16px;
+  }
+
+  .stat {
+    flex: 1;
+    padding: 8px;
+    background: #f9fafb;
+    border-radius: 6px;
+    text-align: center;
+  }
+
+  .stat-value {
+    font-size: 16px;
+    font-weight: 700;
+    color: #ff8c42;
+  }
+
+  .stat-label {
+    font-size: 11px;
+    color: #9ca3af;
+    margin-top: 4px;
+  }
+
+  @media (max-width: 768px) {
+    .sidebar-layout {
+      grid-template-columns: 1fr;
+    }
+
+    .grid-layout {
+      grid-template-columns: 1fr;
+    }
+
+    .timeline-item {
+      flex-direction: column !important;
+    }
+
+    .timeline-dot {
+      margin-top: 0;
+      margin-bottom: 12px;
+    }
+  }
+</style>
+
+<div class="container">
+  <h1>Work Experience Design Options</h1>
+  <p class="subtitle">Scroll down to see all 5 design variations</p>
+
+  <!-- OPTION 1 -->
+  <div class="design-section">
+    <div class="design-title">✨ Option 1: Premium Horizontal Cards</div>
+
+    <div class="card-premium">
+      <div class="card-icon">🎯</div>
+      <div class="card-content">
+        <div class="card-header">
+          <div>
+            <div class="card-title">Chief Operating Officer</div>
+            <div class="card-company">WARTENS UK</div>
+          </div>
+          <div class="card-period">Jun 2022 - Present</div>
+        </div>
+        <div class="card-description">Leading strategic operations across WARTENS ecosystem ventures including iUNI (VR/XR Training), EdWartens (Industrial Automation Training).</div>
+        <div class="achievements">
+          <div class="achievement"><span class="achievement-dot"></span>5+ business units</div>
+          <div class="achievement"><span class="achievement-dot"></span>Strategic leadership</div>
+          <div class="achievement"><span class="achievement-dot"></span>Digital transformation</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-premium">
+      <div class="card-icon">🚀</div>
+      <div class="card-content">
+        <div class="card-header">
+          <div>
+            <div class="card-title">Co-Founder & Technical Business Analyst</div>
+            <div class="card-company">iUNI</div>
+          </div>
+          <div class="card-period">Sep 2024 - Aug 2025</div>
+        </div>
+        <div class="card-description">Leading technical direction and architecture of iUNI VR Training Platform - cutting-edge immersive XR solution for industrial training.</div>
+        <div class="achievements">
+          <div class="achievement"><span class="achievement-dot"></span>VR/XR platform</div>
+          <div class="achievement"><span class="achievement-dot"></span>AI integration</div>
+          <div class="achievement"><span class="achievement-dot"></span>Team leadership</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- OPTION 2 -->
+  <div class="design-section">
+    <div class="design-title">🌫️ Option 2: Glassmorphism Timeline</div>
+
+    <div style="display: flex; gap: 20px; align-items: flex-start;">
+      <div style="width: 40px; flex-shrink: 0;">
+        <div style="width: 12px; height: 12px; background: #ff8c42; border-radius: 50%; margin: 12px 0;"></div>
+        <div style="width: 2px; height: 80px; background: #ffe4cc; margin-left: 5px;"></div>
+        <div style="width: 12px; height: 12px; background: #e91e63; border-radius: 50%; margin: 12px 0;"></div>
+      </div>
+      <div style="flex: 1;">
+        <div class="glass-card">
+          <div style="display: flex; justify-content: space-between; margin-bottom: 12px;">
+            <div>
+              <div style="font-weight: 700; color: #1f2937;">Chief Operating Officer</div>
+              <div style="font-size: 14px; color: #ff8c42; margin-top: 4px;">WARTENS UK</div>
+            </div>
+            <div style="font-size: 12px; color: #9ca3af; background: rgba(0,0,0,0.05); padding: 6px 12px; border-radius: 20px;">Jun 2022</div>
+          </div>
+          <div style="font-size: 14px; color: #6b7280; line-height: 1.6;">Leading strategic operations across WARTENS ecosystem ventures including iUNI (VR/XR Training).</div>
+        </div>
+
+        <div class="glass-card" style="margin-top: 20px;">
+          <div style="display: flex; justify-content: space-between; margin-bottom: 12px;">
+            <div>
+              <div style="font-weight: 700; color: #1f2937;">Co-Founder & TBA</div>
+              <div style="font-size: 14px; color: #e91e63; margin-top: 4px;">iUNI</div>
+            </div>
+            <div style="font-size: 12px; color: #9ca3af; background: rgba(0,0,0,0.05); padding: 6px 12px; border-radius: 20px;">Sep 2024</div>
+          </div>
+          <div style="font-size: 14px; color: #6b7280; line-height: 1.6;">Leading technical direction and architecture of iUNI VR Training Platform.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- OPTION 3 -->
+  <div class="design-section">
+    <div class="design-title">↔️ Option 3: Alternating Layout</div>
+
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card">
+          <div style="font-weight: 700; font-size: 16px; color: #1f2937; margin-bottom: 4px;">Chief Operating Officer</div>
+          <div style="color: #ff8c42; font-weight: 600; margin-bottom: 12px;">WARTENS UK</div>
+          <div style="color: #6b7280; font-size: 13px;">Jun 2022 - Present</div>
+          <div style="color: #4b5563; margin-top: 12px; line-height: 1.6;">Leading strategic operations across WARTENS ecosystem ventures including iUNI (VR/XR Training), EdWartens, and OSCABE.</div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card">
+          <div style="font-weight: 700; font-size: 16px; color: #1f2937; margin-bottom: 4px;">Co-Founder & Technical Business Analyst</div>
+          <div style="color: #e91e63; font-weight: 600; margin-bottom: 12px;">iUNI</div>
+          <div style="color: #6b7280; font-size: 13px;">Sep 2024 - Aug 2025</div>
+          <div style="color: #4b5563; margin-top: 12px; line-height: 1.6;">Leading technical direction and architecture of iUNI VR Training Platform - cutting-edge immersive XR solution.</div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card">
+          <div style="font-weight: 700; font-size: 16px; color: #1f2937; margin-bottom: 4px;">Senior Associate - Business Analyst</div>
+          <div style="color: #2196f3; font-weight: 600; margin-bottom: 12px;">EY (Ernst & Young)</div>
+          <div style="color: #6b7280; font-size: 13px;">Aug 2021 - Jan 2022</div>
+          <div style="color: #4b5563; margin-top: 12px; line-height: 1.6;">Managed multiple concurrent projects with focus on Agile expertise and business process optimization.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- OPTION 4 -->
+  <div class="design-section">
+    <div class="design-title">📋 Option 4: Sidebar + Cards</div>
+
+    <div class="sidebar-layout">
+      <div class="sidebar">
+        <div class="sidebar-item active">WARTENS UK (Current)</div>
+        <div class="sidebar-item">iUNI Co-Founder</div>
+        <div class="sidebar-item">EY Associate</div>
+      </div>
+      <div class="large-card">
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 24px;">
+          <div>
+            <div style="font-size: 28px; font-weight: 700; color: #1f2937;">Chief Operating Officer</div>
+            <div style="font-size: 18px; color: #ff8c42; font-weight: 600; margin-top: 8px;">WARTENS UK</div>
+          </div>
+          <div style="background: #fff3e0; color: #ff8c42; padding: 8px 16px; border-radius: 24px; font-weight: 600;">Jun 2022 - Present</div>
+        </div>
+        <div style="color: #4b5563; line-height: 1.8; margin-bottom: 24px;">Leading strategic operations across WARTENS ecosystem ventures including iUNI (VR/XR Training), EdWartens (Industrial Automation Training), RobotEd (STEM Education), and OSCABE (Industrial Recruitment).</div>
+        <div style="border-top: 1px solid #e5e7eb; padding-top: 16px;">
+          <div style="font-weight: 600; color: #1f2937; margin-bottom: 12px;">Key Achievements</div>
+          <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; font-size: 13px; color: #6b7280;">
+            <div>✓ Oversee 5+ business units</div>
+            <div>✓ Strategic leadership</div>
+            <div>✓ Digital transformation</div>
+            <div>✓ International expansion</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- OPTION 5 -->
+  <div class="design-section">
+    <div class="design-title">📊 Option 5: Modern Grid</div>
+
+    <div class="grid-layout">
+      <div class="grid-card">
+        <div class="grid-logo">🎯</div>
+        <div style="font-weight: 700; font-size: 16px; color: #1f2937;">Chief Operating Officer</div>
+        <div style="color: #ff8c42; font-weight: 600; margin: 8px 0;">WARTENS UK</div>
+        <div style="color: #6b7280; font-size: 12px; margin-bottom: 16px;">Jun 2022 - Present</div>
+        <div style="color: #4b5563; font-size: 14px; line-height: 1.6; margin-bottom: 16px;">Leading strategic operations across WARTENS ecosystem ventures including iUNI, EdWartens, and OSCABE.</div>
+        <div class="grid-stats">
+          <div class="stat">
+            <div class="stat-value">5+</div>
+            <div class="stat-label">Units Led</div>
+          </div>
+          <div class="stat">
+            <div class="stat-value">3</div>
+            <div class="stat-label">Initiatives</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid-card">
+        <div class="grid-logo">🚀</div>
+        <div style="font-weight: 700; font-size: 16px; color: #1f2937;">Co-Founder & TBA</div>
+        <div style="color: #e91e63; font-weight: 600; margin: 8px 0;">iUNI</div>
+        <div style="color: #6b7280; font-size: 12px; margin-bottom: 16px;">Sep 2024 - Aug 2025</div>
+        <div style="color: #4b5563; font-size: 14px; line-height: 1.6; margin-bottom: 16px;">Leading technical direction and architecture of iUNI VR Training Platform.</div>
+        <div class="grid-stats">
+          <div class="stat">
+            <div class="stat-value">VR/XR</div>
+            <div class="stat-label">Tech Stack</div>
+          </div>
+          <div class="stat">
+            <div class="stat-value">AI</div>
+            <div class="stat-label">Integrated</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid-card">
+        <div class="grid-logo" style="background: linear-gradient(135deg, #2196f3 0%, #1976d2 100%);">💼</div>
+        <div style="font-weight: 700; font-size: 16px; color: #1f2937;">Senior Associate BA</div>
+        <div style="color: #2196f3; font-weight: 600; margin: 8px 0;">EY (Ernst & Young)</div>
+        <div style="color: #6b7280; font-size: 12px; margin-bottom: 16px;">Aug 2021 - Jan 2022</div>
+        <div style="color: #4b5563; font-size: 14px; line-height: 1.6; margin-bottom: 16px;">Managed multiple concurrent projects with Agile expertise and process optimization.</div>
+        <div class="grid-stats">
+          <div class="stat">
+            <div class="stat-value">5+</div>
+            <div class="stat-label">Projects</div>
+          </div>
+          <div class="stat">
+            <div class="stat-value">100%</div>
+            <div class="stat-label">Delivered</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="text-align: center; padding: 40px 20px; color: #6b7280;">
+    <p>Which design do you prefer? (A, B, C, D, or E)</p>
+  </div>
+</div>

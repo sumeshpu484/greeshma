@@ -9,7 +9,7 @@ export default function ProjectCard({ project }: { project: Project }) {
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       whileHover={{ y: -8 }}
-      className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow"
+      className="bg-white dark:bg-gray-800 rounded-lg shadow-md dark:shadow-none overflow-hidden hover:shadow-lg dark:hover:shadow-black/30 transition-shadow"
     >
       <img
         src={project.image}
@@ -17,13 +17,13 @@ export default function ProjectCard({ project }: { project: Project }) {
         className="w-full h-48 object-cover"
       />
       <div className="p-6">
-        <h3 className="text-xl font-bold text-gray-900 mb-2">{project.title}</h3>
-        <p className="text-gray-600 mb-4 line-clamp-2">{project.description}</p>
+        <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">{project.title}</h3>
+        <p className="text-gray-600 dark:text-gray-400 mb-4 line-clamp-2">{project.description}</p>
         <div className="flex flex-wrap gap-2 mb-4">
           {project.tags.map(tag => (
             <span
               key={tag}
-              className="px-3 py-1 bg-primary-100 text-primary-700 rounded-full text-sm"
+              className="px-3 py-1 bg-orange-100 dark:bg-orange-950/40 text-orange-700 dark:text-orange-400 rounded-full text-sm"
             >
               {tag}
             </span>
@@ -34,7 +34,7 @@ export default function ProjectCard({ project }: { project: Project }) {
             href={project.link}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-primary-600 font-semibold hover:underline"
+            className="text-orange-600 dark:text-orange-400 font-semibold hover:underline"
           >
             View Project →
           </a>
