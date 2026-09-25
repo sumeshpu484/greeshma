@@ -6,12 +6,11 @@ const nextConfig = {
     qualities: [75, 85],
   },
   compress: true,
-  serverExternalPackages: ['drizzle-kit', 'esbuild', 'esbuild-register', '@libsql/client'],
+  serverExternalPackages: ['drizzle-kit', 'esbuild', 'esbuild-register', '@libsql/client', 'sharp'],
   turbopack: {},
   webpack: (config) => {
     config.resolve.alias = {
       ...config.resolve.alias,
-      'sharp$': false,
       'onnxruntime-node$': false,
     };
     return config;

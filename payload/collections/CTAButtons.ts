@@ -6,6 +6,9 @@ export const CTAButtons: CollectionConfig = {
     singular: 'CTA Button',
     plural: 'CTA Buttons',
   },
+  access: {
+    read: () => true,
+  },
   fields: [
     {
       name: 'label',

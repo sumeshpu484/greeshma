@@ -6,6 +6,9 @@ export const Profile: CollectionConfig = {
     singular: 'Profile',
     plural: 'Profiles',
   },
+  access: {
+    read: () => true,
+  },
   fields: [
     {
       name: 'name',
@@ -38,10 +41,18 @@ export const Profile: CollectionConfig = {
       label: 'Biography',
     },
     {
+      name: 'avatar',
+      type: 'upload',
+      relationTo: 'media',
+      label: 'Profile Photo',
+    },
+    {
       name: 'email',
       type: 'email',
-      required: true,
       label: 'Email Address',
+      admin: {
+        description: 'Public contact email shown on the site',
+      },
     },
     {
       name: 'phone',

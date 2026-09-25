@@ -6,6 +6,9 @@ export const Projects: CollectionConfig = {
     singular: 'Project',
     plural: 'Projects',
   },
+  access: {
+    read: () => true,
+  },
   fields: [
     {
       name: 'title',
@@ -25,7 +28,8 @@ export const Projects: CollectionConfig = {
     },
     {
       name: 'image',
-      type: 'text',
+      type: 'upload',
+      relationTo: 'media',
       required: true,
     },
     {

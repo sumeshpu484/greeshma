@@ -6,6 +6,9 @@ export const SocialLinks: CollectionConfig = {
     singular: 'Social Link',
     plural: 'Social Links',
   },
+  access: {
+    read: () => true,
+  },
   fields: [
     {
       name: 'platform',

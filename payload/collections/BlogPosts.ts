@@ -6,6 +6,9 @@ export const BlogPosts: CollectionConfig = {
     singular: 'Blog Post',
     plural: 'Blog Posts',
   },
+  access: {
+    read: () => true,
+  },
   fields: [
     {
       name: 'title',
@@ -30,7 +33,8 @@ export const BlogPosts: CollectionConfig = {
     },
     {
       name: 'image',
-      type: 'text',
+      type: 'upload',
+      relationTo: 'media',
     },
     {
       name: 'tags',

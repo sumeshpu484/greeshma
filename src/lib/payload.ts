@@ -1,4 +1,4 @@
-import type { Profile, Project, BlogPost, SocialLink, CTAButton, PageData } from '@/types';
+import type { Profile, Project, BlogPost, SocialLink, CTAButton, WorkExperience, PageData } from '@/types';
 import { mockPageData } from './mock-data';
 
 export async function fetchProfile(): Promise<Profile> {
@@ -53,7 +53,7 @@ export async function fetchProjects(): Promise<Project[]> {
         title: doc.title,
         slug: doc.slug,
         description: doc.description,
-        image: doc.image,
+        image: doc.image?.url || doc.image || '',
         tags: doc.tags?.map((t: any) => t.tag) || [],
         link: doc.link,
         featured: doc.featured,
@@ -62,6 +62,35 @@ export async function fetchProjects(): Promise<Project[]> {
       .sort((a: Project, b: Project) => a.displayOrder - b.displayOrder);
   } catch (error) {
     console.warn('Error fetching projects:', error);
+    return [];
+  }
+}
+
+export async function fetchWorkExperience(): Promise<WorkExperience[]> {
+  try {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_PAYLOAD_URL}/api/work-experience?limit=100`, {
+      next: { revalidate: 3600 },
+      signal: AbortSignal.timeout(8000),
+    });
+
+    if (!res.ok) throw new Error('Failed to fetch work experience');
+
+    const data = await res.json();
+    return (data.docs || [])
+      .map((doc: any) => ({
+        id: doc.id,
+        company: doc.company,
+        position: doc.position,
+        period: doc.period,
+        description: doc.description,
+        responsibilities: doc.responsibilities?.map((r: any) => r.item) || [],
+        technologies: doc.technologies?.map((t: any) => t.item) || [],
+        type: doc.type,
+        displayOrder: doc.displayOrder,
+      }))
+      .sort((a: WorkExperience, b: WorkExperience) => a.displayOrder - b.displayOrder);
+  } catch (error) {
+    console.warn('Error fetching work experience:', error);
     return [];
   }
 }
@@ -84,7 +113,7 @@ export async function fetchBlogPosts(): Promise<BlogPost[]> {
         slug: doc.slug,
         excerpt: doc.excerpt,
         content: doc.content,
-        image: doc.image,
+        image: doc.image?.url || doc.image || '',
         tags: doc.tags?.map((t: any) => t.tag) || [],
         published: doc.published,
         publishedAt: doc.publishedAt,
@@ -117,7 +146,7 @@ export async function fetchBlogPostBySlug(slug: string): Promise<BlogPost> {
       slug: doc.slug,
       excerpt: doc.excerpt,
       content: doc.content,
-      image: doc.image,
+      image: doc.image?.url || doc.image || '',
       tags: doc.tags?.map((t: any) => t.tag) || [],
       published: doc.published,
       publishedAt: doc.publishedAt,
