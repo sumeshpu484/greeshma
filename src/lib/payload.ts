@@ -3,7 +3,7 @@ import { mockPageData } from './mock-data';
 
 export async function fetchProfile(): Promise<Profile> {
   try {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_PAYLOAD_URL}/api/profile?limit=1`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/profile?limit=1`, {
       next: { revalidate: 3600 },
       signal: AbortSignal.timeout(8000),
     });
@@ -39,7 +39,7 @@ export async function fetchProfile(): Promise<Profile> {
 
 export async function fetchProjects(): Promise<Project[]> {
   try {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_PAYLOAD_URL}/api/projects?limit=100`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/projects?limit=100`, {
       next: { revalidate: 3600 },
       signal: AbortSignal.timeout(8000),
     });
@@ -68,7 +68,7 @@ export async function fetchProjects(): Promise<Project[]> {
 
 export async function fetchWorkExperience(): Promise<WorkExperience[]> {
   try {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_PAYLOAD_URL}/api/work-experience?limit=100`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/work-experience?limit=100`, {
       next: { revalidate: 3600 },
       signal: AbortSignal.timeout(8000),
     });
@@ -97,7 +97,7 @@ export async function fetchWorkExperience(): Promise<WorkExperience[]> {
 
 export async function fetchBlogPosts(): Promise<BlogPost[]> {
   try {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_PAYLOAD_URL}/api/blog-posts?limit=100`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/blog-posts?limit=100`, {
       next: { revalidate: 3600 },
       signal: AbortSignal.timeout(8000),
     });
@@ -128,7 +128,7 @@ export async function fetchBlogPosts(): Promise<BlogPost[]> {
 export async function fetchBlogPostBySlug(slug: string): Promise<BlogPost> {
   try {
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_PAYLOAD_URL}/api/blog-posts?where[slug][equals]=${slug}`,
+      `${process.env.NEXT_PUBLIC_URL}/api/blog-posts?where[slug][equals]=${slug}`,
       { next: { revalidate: 3600 }, signal: AbortSignal.timeout(8000) }
     );
 
@@ -159,7 +159,7 @@ export async function fetchBlogPostBySlug(slug: string): Promise<BlogPost> {
 
 export async function fetchSocialLinks(): Promise<SocialLink[]> {
   try {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_PAYLOAD_URL}/api/social-links?limit=100`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/social-links?limit=100`, {
       next: { revalidate: 3600 },
       signal: AbortSignal.timeout(8000),
     });
@@ -179,7 +179,7 @@ export async function fetchSocialLinks(): Promise<SocialLink[]> {
 
 export async function fetchCTAButtons(): Promise<CTAButton[]> {
   try {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_PAYLOAD_URL}/api/cta-buttons?limit=100`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/cta-buttons?limit=100`, {
       next: { revalidate: 3600 },
       signal: AbortSignal.timeout(8000),
     });

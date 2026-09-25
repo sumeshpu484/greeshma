@@ -61,7 +61,7 @@ Set these in Vercel dashboard:
 ```env
 DATABASE_URL=postgresql://user:password@host:5432/dbname
 PAYLOAD_SECRET=generate-a-long-random-string-here
-NEXT_PUBLIC_PAYLOAD_URL=https://your-domain.com
+NEXT_PUBLIC_URL=https://your-domain.com
 NODE_ENV=production
 ```
 
@@ -97,7 +97,7 @@ In Vercel dashboard:
 2. Add:
    - `DATABASE_URL` (PostgreSQL connection string)
    - `PAYLOAD_SECRET` (random string)
-   - `NEXT_PUBLIC_PAYLOAD_URL` (your domain URL)
+   - `NEXT_PUBLIC_URL` (your domain URL)
 
 ### Step 4: Deploy
 
@@ -153,7 +153,7 @@ Check:
 
 Ensure:
 - `PAYLOAD_SECRET` is set
-- `NEXT_PUBLIC_PAYLOAD_URL` matches your domain
+- `NEXT_PUBLIC_URL` matches your domain
 - Database tables exist (run `/admin` once to create)
 
 ### Slow queries

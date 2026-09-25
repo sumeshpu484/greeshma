@@ -126,7 +126,7 @@ In Vercel dashboard → Settings → Environment Variables:
 ```
 DATABASE_URL=postgresql://user:password@host:5432/portfolio_db
 PAYLOAD_SECRET=generate-with-node-command (see DATABASE_SETUP.md)
-NEXT_PUBLIC_PAYLOAD_URL=https://your-domain.com
+NEXT_PUBLIC_URL=https://your-domain.com
 NODE_ENV=production
 ```
 
@@ -258,7 +258,7 @@ Edit `src/components/animations.ts` to adjust:
 
 ### Admin Page Not Loading
 - Check `PAYLOAD_SECRET` is set
-- Verify `NEXT_PUBLIC_PAYLOAD_URL` matches your domain
+- Verify `NEXT_PUBLIC_URL` matches your domain
 - Ensure database connection is working
 
 ### Contact Form Not Saving

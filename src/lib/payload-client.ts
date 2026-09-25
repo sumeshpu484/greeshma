@@ -19,7 +19,7 @@ export const initializePayload = async () => {
     console.log('📡 Initializing Payload CMS...');
     console.log('🔗 Database URL configured:', !!process.env.DATABASE_URL);
     console.log('🔐 Payload Secret configured:', !!process.env.PAYLOAD_SECRET);
-    console.log('🌐 Payload URL:', process.env.NEXT_PUBLIC_PAYLOAD_URL);
+    console.log('🌐 Payload URL:', process.env.NEXT_PUBLIC_URL);
 
     payloadInstance = await getPayload({ config });
 
