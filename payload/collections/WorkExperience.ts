@@ -1,4 +1,5 @@
 import { CollectionConfig } from 'payload';
+import { revalidateOnChange, revalidateOnDelete } from '../hooks/revalidate';
 
 export const WorkExperience: CollectionConfig = {
   slug: 'work-experience',
@@ -8,6 +9,10 @@ export const WorkExperience: CollectionConfig = {
   },
   access: {
     read: () => true,
+  },
+  hooks: {
+    afterChange: [revalidateOnChange('work-experience')],
+    afterDelete: [revalidateOnDelete('work-experience')],
   },
   fields: [
     {

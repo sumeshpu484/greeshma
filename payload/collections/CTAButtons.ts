@@ -1,4 +1,5 @@
 import { CollectionConfig } from 'payload';
+import { revalidateOnChange, revalidateOnDelete } from '../hooks/revalidate';
 
 export const CTAButtons: CollectionConfig = {
   slug: 'cta-buttons',
@@ -8,6 +9,10 @@ export const CTAButtons: CollectionConfig = {
   },
   access: {
     read: () => true,
+  },
+  hooks: {
+    afterChange: [revalidateOnChange('cta-buttons')],
+    afterDelete: [revalidateOnDelete('cta-buttons')],
   },
   fields: [
     {

@@ -1,4 +1,5 @@
 import { CollectionConfig } from 'payload';
+import { revalidateOnChange, revalidateOnDelete } from '../hooks/revalidate';
 
 export const SocialLinks: CollectionConfig = {
   slug: 'social-links',
@@ -8,6 +9,10 @@ export const SocialLinks: CollectionConfig = {
   },
   access: {
     read: () => true,
+  },
+  hooks: {
+    afterChange: [revalidateOnChange('social-links')],
+    afterDelete: [revalidateOnDelete('social-links')],
   },
   fields: [
     {

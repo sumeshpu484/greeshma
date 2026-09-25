@@ -4,7 +4,7 @@ import { mockPageData } from './mock-data';
 export async function fetchProfile(): Promise<Profile> {
   try {
     const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/profile?limit=1`, {
-      next: { revalidate: 3600 },
+      next: { revalidate: 3600, tags: ['profile'] },
       signal: AbortSignal.timeout(8000),
     });
 
@@ -40,7 +40,7 @@ export async function fetchProfile(): Promise<Profile> {
 export async function fetchProjects(): Promise<Project[]> {
   try {
     const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/projects?limit=100`, {
-      next: { revalidate: 3600 },
+      next: { revalidate: 3600, tags: ['projects'] },
       signal: AbortSignal.timeout(8000),
     });
 
@@ -69,7 +69,7 @@ export async function fetchProjects(): Promise<Project[]> {
 export async function fetchWorkExperience(): Promise<WorkExperience[]> {
   try {
     const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/work-experience?limit=100`, {
-      next: { revalidate: 3600 },
+      next: { revalidate: 3600, tags: ['work-experience'] },
       signal: AbortSignal.timeout(8000),
     });
 
@@ -98,7 +98,7 @@ export async function fetchWorkExperience(): Promise<WorkExperience[]> {
 export async function fetchBlogPosts(): Promise<BlogPost[]> {
   try {
     const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/blog-posts?limit=100`, {
-      next: { revalidate: 3600 },
+      next: { revalidate: 3600, tags: ['blog-posts'] },
       signal: AbortSignal.timeout(8000),
     });
 
@@ -129,7 +129,7 @@ export async function fetchBlogPostBySlug(slug: string): Promise<BlogPost> {
   try {
     const res = await fetch(
       `${process.env.NEXT_PUBLIC_URL}/api/blog-posts?where[slug][equals]=${slug}`,
-      { next: { revalidate: 3600 }, signal: AbortSignal.timeout(8000) }
+      { next: { revalidate: 3600, tags: ['blog-posts'] }, signal: AbortSignal.timeout(8000) }
     );
 
     if (!res.ok) throw new Error('Failed to fetch blog post');
@@ -160,7 +160,7 @@ export async function fetchBlogPostBySlug(slug: string): Promise<BlogPost> {
 export async function fetchSocialLinks(): Promise<SocialLink[]> {
   try {
     const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/social-links?limit=100`, {
-      next: { revalidate: 3600 },
+      next: { revalidate: 3600, tags: ['social-links'] },
       signal: AbortSignal.timeout(8000),
     });
 
@@ -180,7 +180,7 @@ export async function fetchSocialLinks(): Promise<SocialLink[]> {
 export async function fetchCTAButtons(): Promise<CTAButton[]> {
   try {
     const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/cta-buttons?limit=100`, {
-      next: { revalidate: 3600 },
+      next: { revalidate: 3600, tags: ['cta-buttons'] },
       signal: AbortSignal.timeout(8000),
     });
 

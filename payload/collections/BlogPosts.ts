@@ -1,4 +1,5 @@
 import { CollectionConfig } from 'payload';
+import { revalidateOnChange, revalidateOnDelete } from '../hooks/revalidate';
 
 export const BlogPosts: CollectionConfig = {
   slug: 'blog-posts',
@@ -8,6 +9,10 @@ export const BlogPosts: CollectionConfig = {
   },
   access: {
     read: () => true,
+  },
+  hooks: {
+    afterChange: [revalidateOnChange('blog-posts')],
+    afterDelete: [revalidateOnDelete('blog-posts')],
   },
   fields: [
     {

@@ -1,4 +1,5 @@
 import { CollectionConfig } from 'payload';
+import { revalidateOnChange, revalidateOnDelete } from '../hooks/revalidate';
 
 export const Projects: CollectionConfig = {
   slug: 'projects',
@@ -8,6 +9,10 @@ export const Projects: CollectionConfig = {
   },
   access: {
     read: () => true,
+  },
+  hooks: {
+    afterChange: [revalidateOnChange('projects')],
+    afterDelete: [revalidateOnDelete('projects')],
   },
   fields: [
     {
